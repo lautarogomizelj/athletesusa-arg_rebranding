@@ -37,10 +37,10 @@ Este repositorio es la **versión autónoma de producción** de la experiencia w
     │   ├── App.tsx                # Rutas + lazy loading con Suspense
     │   └── App.module.css         # Estilo del fallback de carga (.loadingPage)
     ├── athletesusa-arg/
-    │   ├── AthletesUsa.tsx        # Landing principal (~1.600 líneas): nav fija,
+    │   ├── AthletesUsa.tsx        # Landing principal (~2.000 líneas): nav fija,
     │   │                          # track scrolleado de escenas con timeline animejs,
     │   │                          # arte por componente (JourneyPath, OpportunityMatching,
-    │   │                          # OutcomeOrbit, SupportProof, CasesGrid, TeamGrid),
+    │   │                          # OutcomeOrbit, SupportJourney, CasesGrid, TeamGrid),
     │   │                          # formulario 2 pasos y footer
     │   ├── AthletesDetail.tsx     # Páginas de detalle (/dream, /path, /opportunity,
     │   │                          # /campus, /support) con su propio 404 inline
@@ -58,7 +58,7 @@ Este repositorio es la **versión autónoma de producción** de la experiencia w
 
 ## La landing, sección por sección
 
-El main es un `.storyTrack` de ~1080svh. Una única timeline de animejs 4 se mapea al progreso de scroll (`onScroll`) y orquesta entradas, salidas y el arte de cada escena. Al final del track, un `.handoff` funde hacia la sección de evaluación.
+El main es un `.storyTrack` de ~1310svh. Una única timeline de animejs 4 se mapea al progreso de scroll (`onScroll`) y orquesta entradas, salidas y el arte de cada escena. Al final del track, un `.handoff` funde hacia la sección de evaluación.
 
 ### Escenas del track (en orden)
 
@@ -76,7 +76,7 @@ El main es un `.storyTrack` de ~1080svh. Una única timeline de animejs 4 se map
    En layouts verticales (<1100px) el bloque de texto cede lugar deslizándose fuera cuando arranca el matching, para que el diagrama use toda la pantalla; al cierre aparece la frase final al pie. Los nombres/universidades son ficticios (demo).
 
 4. **`support` — Acompañamiento 360° ("Antes, durante y después.")**
-   Métricas institucionales (2008 · 3.000+ estudiantes-atletas · 20.000+ entrenadores) más `SupportProof`: tira de fotos y logos de instituciones que validan la red.
+   Métricas institucionales con **contadores animados** (2008 · 3.000+ estudiantes-atletas · 20.000+ entrenadores) que suben al entrar la escena, más `SupportJourney` ("El camino del atleta"): un raíl vertical con línea SVG que se dibuja cruzando 3 nodos (⚡ Antes → 🎓 Durante → 🚀 Después) que se van encendiendo con el scroll. Cada etapa ilumina su tarjeta: **antes** (checklist de servicios uno por uno + puntos viajando hacia universidades), hito central "Beca obtenida / Universidad confirmada", **durante** (universidad al centro con anillo que barre y 4 satélites orbitando + graduación), **después** (red de conexiones SVG desde el atleta hacia oportunidades laborales, networking, deportivas y profesionales) y card final "Acompañamiento 360°" con la línea Antes──Durante──Después iluminándose en secuencia. En pantallas <1100px el copy cede lugar deslizándose fuera para que el arte ocupe la pantalla.
 
 5. **`about` — Quiénes somos ("Una agencia que nació del deporte.")**
    Escena solo tipográfica sobre fondo navy con la historia de la agencia desde 2008. CTA directo a la evaluación.

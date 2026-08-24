@@ -485,30 +485,210 @@ function CampusDocuments() {
 }
 Fin de tarjeta fuera de servicio */
 
-function SupportProof() {
+const sjStroke = {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.8,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
+
+const sjBolt = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
+  </svg>
+);
+
+const sjCap = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <path d="m12 4 10 5-10 5L2 9l10-5Z" />
+    <path d="M6 11.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-4.5" />
+    <path d="M22 9v5" />
+  </svg>
+);
+
+const sjRocket = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <path d="M15 3c3 .6 5.4 3 6 6l-4 4-6-6 4-4Z" />
+    <circle cx="14" cy="10" r="1.6" />
+    <path d="m11 7-3 1-1.5 3L9 13.5" />
+    <path d="m17 13-1 3-3 1.5L10.5 15" />
+    <path d="m7 17-2.5 2.5" />
+  </svg>
+);
+
+const sjTrophy = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <path d="M8 4h8v5a4 4 0 0 1-8 0V4Z" />
+    <path d="M8 6H5.5A2.5 2.5 0 0 0 8 9.5M16 6h2.5A2.5 2.5 0 0 1 16 9.5" />
+    <path d="M12 13v3" />
+    <path d="M8.5 20h7l-.8-4h-5.4l-.8 4Z" />
+  </svg>
+);
+
+const sjChart = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <path d="M4 4v16h16" />
+    <path d="m7 15 4-5 3 2.5L19 7" />
+    <path d="M19 11V7h-4" />
+  </svg>
+);
+
+const sjBook = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <path d="M12 6c-2-1.5-4.5-2-8-2v14c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2V4c-3.5 0-6 .5-8 2Z" />
+    <path d="M12 6v14" />
+  </svg>
+);
+
+const sjRefresh = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <path d="M20 12a8 8 0 1 1-2.3-5.6" />
+    <path d="M20 3v4h-4" />
+  </svg>
+);
+
+const sjBriefcase = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <rect x="3" y="7.5" width="18" height="13" rx="2" />
+    <path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" />
+    <path d="M3 13h18" />
+  </svg>
+);
+
+const sjGlobe = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M3 12h18" />
+    <path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18Z" />
+  </svg>
+);
+
+const sjMedal = (
+  <svg viewBox="0 0 24 24" {...sjStroke}>
+    <circle cx="12" cy="15.5" r="5" />
+    <path d="m8.6 11.2-3.4-7h4L12 9l2.8-4.8h4l-3.4 7" />
+  </svg>
+);
+
+function SupportJourney() {
   return (
-    <div className={styles.proofStrip}>
-      <figure data-proof-card>
-        <img src={emilJaaskelainenCase} alt="Emil Jaaskelainen con la camiseta de St. Louis City" loading="lazy" />
-        <span className={styles.proofLogo} data-proof-logo aria-hidden="true">
-          <img src={stLouisCityLogo} alt="" loading="lazy" />
+    <div className={styles.sjWrap} aria-hidden="true">
+      <div className={styles.sjRail}>
+        <svg className={styles.sjRailSvg} viewBox="0 0 4 100" preserveAspectRatio="none">
+          <path className={styles.sjRailBase} d="M2 0v100" />
+          <path className={styles.sjRailLine} data-sj-rail-line d="M2 0v100" pathLength={1} />
+        </svg>
+        <span className={styles.sjNode} data-sj-node>
+          {sjBolt}
+          <em>Antes</em>
         </span>
-        <figcaption>Emil Jaaskelainen</figcaption>
-      </figure>
-      <figure data-proof-card>
-        <img src={delfinaSchmidtCase} alt="Delfina Schmidt con la camiseta de Boca Juniors" loading="lazy" />
-        <span className={styles.proofLogo} data-proof-logo aria-hidden="true">
-          <img src={rioGrandeLogo} alt="" loading="lazy" />
+        <span className={styles.sjNode} data-sj-node>
+          {sjCap}
+          <em>Durante</em>
         </span>
-        <figcaption>Delfina Schmidt</figcaption>
-      </figure>
-      <figure data-proof-card>
-        <img src={delfiGonzalezCase} alt="Delfi González con su palo de hockey" loading="lazy" />
-        <span className={styles.proofLogo} data-proof-logo aria-hidden="true">
-          <img src={liuSharksLogo} alt="" loading="lazy" />
+        <span className={styles.sjNode} data-sj-node>
+          {sjRocket}
+          <em>Después</em>
         </span>
-        <figcaption>Delfi González</figcaption>
-      </figure>
+      </div>
+      <div className={styles.sjPanel}>
+        <article className={styles.sjCard} data-sj-stage="antes">
+          <header className={styles.sjHead}>
+            <i className={styles.sjHeadIcon}>{sjRocket}</i>
+            <div>
+              <strong>Antes de la admisión</strong>
+              <p>Construimos las oportunidades antes de que lleguen.</p>
+            </div>
+          </header>
+          <ul className={styles.sjChecks}>
+            <li data-sj-check>Highlight Video</li>
+            <li data-sj-check>Perfil Deportivo</li>
+            <li data-sj-check>Promoción con Entrenadores</li>
+            <li data-sj-check>Negociación de Becas</li>
+          </ul>
+          <div className={styles.sjStrip}>
+            <i className={styles.sjEmitter}>{sjBolt}</i>
+            <span className={styles.sjDots}>
+              <i data-sj-dot />
+              <i data-sj-dot />
+              <i data-sj-dot />
+            </span>
+            <span className={styles.sjUnis}>
+              <em data-sj-uni>Riverside U</em>
+              <em data-sj-uni>Bay College</em>
+              <em data-sj-uni>North Tech</em>
+            </span>
+          </div>
+        </article>
+
+        <aside className={`${styles.sjCard} ${styles.sjMilestone}`} data-sj-milestone>
+          <i>{sjTrophy}</i>
+          <div>
+            <strong>Beca obtenida</strong>
+            <span>Universidad confirmada</span>
+          </div>
+        </aside>
+
+        <article className={styles.sjCard} data-sj-stage="durante">
+          <header className={styles.sjHead}>
+            <i className={styles.sjHeadIcon}>{sjCap}</i>
+            <div>
+              <strong>Durante la universidad</strong>
+              <p>Seguimos acompañándote para que puedas rendir dentro y fuera del campo.</p>
+            </div>
+          </header>
+          <div className={styles.sjOrbit}>
+            <svg className={styles.sjOrbitSvg} viewBox="0 0 100 100">
+              <circle data-sj-ring cx="50" cy="50" r="44" pathLength={100} />
+            </svg>
+            <strong className={styles.sjCore} data-sj-core>Tu universidad</strong>
+            <span className={styles.sjSatTop} data-sj-sat>{sjChart}Actualización de perfil</span>
+            <span className={styles.sjSatRight} data-sj-sat>{sjBook}Seguimiento académico</span>
+            <span className={styles.sjSatBottom} data-sj-sat>{sjTrophy}Soporte deportivo</span>
+            <span className={styles.sjSatLeft} data-sj-sat>{sjRefresh}Asistencia en transferencias</span>
+            <span className={styles.sjGrad} data-sj-grad>
+              {sjCap}
+              <b>GRADUACIÓN</b>
+            </span>
+          </div>
+        </article>
+
+        <article className={styles.sjCard} data-sj-stage="despues">
+          <header className={styles.sjHead}>
+            <i className={styles.sjHeadIcon}>{sjGlobe}</i>
+            <div>
+              <strong>Después de la universidad</strong>
+              <p>La red construida durante la experiencia sigue generando oportunidades.</p>
+            </div>
+          </header>
+          <div className={styles.sjNet}>
+            <svg className={styles.sjNetSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path data-sj-net-line d="M12 84C4 64 4 36 14 16" pathLength={1} />
+              <path data-sj-net-line d="M12 84C28 62 40 34 58 12" pathLength={1} />
+              <path data-sj-net-line d="M12 84C40 76 64 62 86 48" pathLength={1} />
+              <path data-sj-net-line d="M12 84C34 92 56 94 78 88" pathLength={1} />
+            </svg>
+            <i className={styles.sjNetCore} data-sj-net-core>{sjBolt}</i>
+            <em className={styles.sjNetTopLeft} data-sj-net-node>{sjChart}Desarrollo profesional</em>
+            <em className={styles.sjNetTopRight} data-sj-net-node>{sjBriefcase}Oportunidades laborales</em>
+            <em className={styles.sjNetMidRight} data-sj-net-node>{sjGlobe}Networking internacional</em>
+            <em className={styles.sjNetBottomRight} data-sj-net-node>{sjMedal}Oportunidades deportivas</em>
+          </div>
+        </article>
+
+        <aside className={`${styles.sjCard} ${styles.sjFinal}`} data-sj-final>
+          <strong>Acompañamiento 360°</strong>
+          <p>Nuestro trabajo no termina con la firma: acompañamos a nuestros atletas durante toda su carrera universitaria y profesional.</p>
+          <div className={styles.sjFinalPath}>
+            <em data-sj-final-node>Antes</em>
+            <i data-sj-final-seg />
+            <em data-sj-final-node>Durante</em>
+            <i data-sj-final-seg />
+            <em data-sj-final-node>Después</em>
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }
@@ -830,11 +1010,43 @@ export default function AthletesUsa() {
       );
       const matchFinal = root.querySelector<HTMLElement>("[data-match-final]");
       const campusScene = root.querySelector<HTMLElement>('[data-scene="campus"]');
-      const proofCards = Array.from(
-        root.querySelectorAll<HTMLElement>("[data-proof-card]"),
+      const supportScene = root.querySelector<HTMLElement>('[data-scene="support"]');
+      const metricEls = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-metric]"),
       );
-      const proofLogos = Array.from(
-        root.querySelectorAll<HTMLElement>("[data-proof-logo]"),
+      const metricStates = metricEls.map((el) => ({
+        v: el.dataset.format === "plain" ? 1900 : 0,
+      }));
+      const sjRailLine = root.querySelector<SVGPathElement>("[data-sj-rail-line]");
+      const sjNodes = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-sj-node]"),
+      );
+      const sjStages = (["antes", "durante", "despues"] as const)
+        .map((key) => root.querySelector<HTMLElement>(`[data-sj-stage="${key}"]`))
+        .filter((stage): stage is HTMLElement => stage !== null);
+      const sjChecks = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-sj-check]"),
+      );
+      const sjDots = Array.from(root.querySelectorAll<HTMLElement>("[data-sj-dot]"));
+      const sjUnis = Array.from(root.querySelectorAll<HTMLElement>("[data-sj-uni]"));
+      const sjMilestone = root.querySelector<HTMLElement>("[data-sj-milestone]");
+      const sjCore = root.querySelector<HTMLElement>("[data-sj-core]");
+      const sjRing = root.querySelector<SVGCircleElement>("[data-sj-ring]");
+      const sjSats = Array.from(root.querySelectorAll<HTMLElement>("[data-sj-sat]"));
+      const sjGrad = root.querySelector<HTMLElement>("[data-sj-grad]");
+      const sjNetCore = root.querySelector<HTMLElement>("[data-sj-net-core]");
+      const sjNetLines = Array.from(
+        root.querySelectorAll<SVGPathElement>("[data-sj-net-line]"),
+      );
+      const sjNetNodes = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-sj-net-node]"),
+      );
+      const sjFinal = root.querySelector<HTMLElement>("[data-sj-final]");
+      const sjFinalSegs = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-sj-final-seg]"),
+      );
+      const sjFinalNodes = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-sj-final-node]"),
       );
       const caseCards = Array.from(
         root.querySelectorAll<HTMLElement>("[data-case-card]"),
@@ -844,7 +1056,7 @@ export default function AthletesUsa() {
       );
 
       const setActiveScene = (progress: number) => {
-        const activeIndex = [0.084, 0.307, 0.589, 0.7, 0.811, 0.922, 0.982]
+        const activeIndex = [0.073, 0.257, 0.486, 0.752, 0.844, 0.936, 0.986]
           .findIndex((limit) => progress < limit);
 
         scenes.forEach((scene, index) => {
@@ -977,8 +1189,44 @@ export default function AthletesUsa() {
         if (matchFinal) {
           utils.set(matchFinal, { opacity: 0, y: "0.8rem" });
         }
-        utils.set(proofCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
-        utils.set(proofLogos, { opacity: 0, scale: 0.78, x: "0.8rem" });
+        metricEls.forEach((el) => {
+          el.textContent = el.dataset.format === "plain" ? "1900" : "0";
+        });
+        if (sjRailLine) {
+          utils.set(sjRailLine, { strokeDasharray: 1, strokeDashoffset: 1 });
+        }
+        utils.set(sjNodes, {
+          backgroundColor: "#ffffff",
+          borderColor: "rgba(6, 27, 79, 0.22)",
+          color: "#061b4f",
+        });
+        utils.set(sjStages.slice(1), { opacity: 0.42, scale: 0.97 });
+        utils.set(sjChecks, { opacity: 0, x: "-0.5rem" });
+        utils.set(sjDots, { opacity: 0, scale: 0.4 });
+        utils.set(sjUnis, { opacity: 0.22 });
+        if (sjMilestone) {
+          utils.set(sjMilestone, { opacity: 0, scale: 0.85, y: "0.8rem" });
+        }
+        if (sjCore) {
+          utils.set(sjCore, { opacity: 0, scale: 0.6 });
+        }
+        if (sjRing) {
+          utils.set(sjRing, { strokeDasharray: 100, strokeDashoffset: 100 });
+        }
+        utils.set(sjSats, { opacity: 0, scale: 0.6 });
+        if (sjGrad) {
+          utils.set(sjGrad, { opacity: 0, y: "1.6rem" });
+        }
+        if (sjNetCore) {
+          utils.set(sjNetCore, { opacity: 0, scale: 0.5 });
+        }
+        utils.set(sjNetLines, { strokeDasharray: 1, strokeDashoffset: 1 });
+        utils.set(sjNetNodes, { opacity: 0, scale: 0.75 });
+        if (sjFinal) {
+          utils.set(sjFinal, { opacity: 0, y: "0.9rem" });
+        }
+        utils.set(sjFinalSegs, { scaleX: 0, transformOrigin: "0% 50%" });
+        utils.set(sjFinalNodes, { opacity: 0.28 });
         utils.set(caseCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
         utils.set(teamCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
       }
@@ -1082,9 +1330,9 @@ export default function AthletesUsa() {
       addTransition(0, 1, 120, 80);
       addTransition(1, 2, 520, 80);
       addTransition(2, 3, 1020, 80);
-      addTransition(3, 4, 1220, 80);
-      addTransition(4, 5, 1420, 80);
-      addTransition(5, 6, 1620, 80);
+      addTransition(3, 4, 1600, 80);
+      addTransition(4, 5, 1800, 80);
+      addTransition(5, 6, 2000, 80);
 
       if (!reduceMotion) {
         if (orbit) {
@@ -1383,7 +1631,194 @@ export default function AthletesUsa() {
           }, 958);
         }
 
+        metricEls.forEach((el, index) => {
+          const state = metricStates[index];
+          timeline.add(state, {
+            duration: 90,
+            ease: "out(3)",
+            v: Number(el.dataset.target ?? 0),
+            onUpdate: () => {
+              el.textContent = el.dataset.format === "plain"
+                ? String(Math.round(state.v))
+                : Math.round(state.v).toLocaleString("es-AR");
+            },
+          }, 1060);
+        });
+
+        if (sjRailLine) {
+          timeline.add(sjRailLine, {
+            duration: 408,
+            ease: "linear",
+            strokeDashoffset: 0,
+          }, 1112);
+        }
+        const lightSjNode = (index: number, start: number) => {
+          if (sjNodes[index]) {
+            timeline.add(sjNodes[index], {
+              duration: 30,
+              ease: "out(3)",
+              backgroundColor: "#d4072f",
+              borderColor: "#d4072f",
+              color: "#f8f9fc",
+            }, start);
+          }
+        };
+        lightSjNode(0, 1125);
+        lightSjNode(1, 1320);
+        lightSjNode(2, 1445);
+
+        timeline.add(sjChecks, {
+          delay: stagger(22),
+          duration: 26,
+          ease: "outBack(1.7)",
+          opacity: 1,
+          x: "0rem",
+        }, 1160);
+        timeline.add(sjDots, {
+          delay: stagger(16),
+          duration: 22,
+          ease: "outBack(2)",
+          opacity: 1,
+          scale: 1,
+        }, 1190);
+        timeline.add(sjUnis, {
+          duration: 30,
+          ease: "out(3)",
+          opacity: 1,
+        }, 1225);
+
+        if (sjStages[0]) {
+          timeline.add(sjStages[0], {
+            duration: 28,
+            ease: "inOut(3)",
+            opacity: 0.42,
+            scale: 0.97,
+          }, 1248);
+        }
+        if (sjMilestone) {
+          timeline.add(sjMilestone, {
+            duration: 34,
+            ease: "outBack(1.6)",
+            opacity: 1,
+            scale: 1,
+            y: "0rem",
+          }, 1256);
+        }
+
+        if (sjStages[1]) {
+          timeline
+            .add(sjStages[1], {
+              duration: 32,
+              ease: "inOut(3)",
+              opacity: 1,
+              scale: 1,
+            }, 1318)
+            .add(sjStages[1], {
+              duration: 26,
+              ease: "inOut(3)",
+              opacity: 0.42,
+              scale: 0.97,
+            }, 1436);
+        }
+        if (sjCore) {
+          timeline.add(sjCore, {
+            duration: 34,
+            ease: "outBack(1.5)",
+            opacity: 1,
+            scale: 1,
+          }, 1330);
+        }
+        if (sjRing) {
+          timeline.add(sjRing, {
+            duration: 52,
+            ease: "linear",
+            strokeDashoffset: 0,
+          }, 1338);
+        }
+        timeline.add(sjSats, {
+          delay: stagger(12),
+          duration: 28,
+          ease: "outBack(1.7)",
+          opacity: 1,
+          scale: 1,
+        }, 1352);
+        if (sjGrad) {
+          timeline.add(sjGrad, {
+            duration: 30,
+            ease: "out(3)",
+            opacity: 1,
+            y: "-0.2rem",
+          }, 1400);
+        }
+
+        if (sjStages[2]) {
+          timeline.add(sjStages[2], {
+            duration: 32,
+            ease: "inOut(3)",
+            opacity: 1,
+            scale: 1,
+          }, 1442);
+        }
+        if (sjNetCore) {
+          timeline.add(sjNetCore, {
+            duration: 26,
+            ease: "outBack(1.6)",
+            opacity: 1,
+            scale: 1,
+          }, 1450);
+        }
+        sjNetLines.forEach((path, index) => {
+          timeline.add(path, {
+            duration: 32,
+            ease: "inOut(2)",
+            strokeDashoffset: 0,
+          }, 1462 + index * 10);
+        });
+        timeline.add(sjNetNodes, {
+          delay: stagger(10),
+          duration: 28,
+          ease: "outBack(1.7)",
+          opacity: 1,
+          scale: 1,
+        }, 1470);
+
+        if (sjFinal) {
+          timeline.add(sjFinal, {
+            duration: 38,
+            ease: "out(3)",
+            opacity: 1,
+            y: "0rem",
+          }, 1524);
+        }
+        timeline.add(sjFinalNodes, {
+          delay: stagger(18),
+          duration: 20,
+          ease: "out(3)",
+          opacity: 1,
+        }, 1546);
+        timeline.add(sjFinalSegs, {
+          delay: stagger(18),
+          duration: 22,
+          ease: "inOut(2)",
+          scaleX: 1,
+        }, 1548);
+
         const verticalLayout = window.matchMedia("(max-width: 1099px)");
+        if (supportScene && verticalLayout.matches) {
+          const supportExitParts = Array.from(
+            supportScene.querySelectorAll<HTMLElement>(
+              "[data-heading], [data-copy-block], ." + styles.arrowLink,
+            ),
+          );
+          supportExitParts.forEach((part, index) => {
+            timeline.add(part, {
+              duration: 40,
+              ease: "inOut(3)",
+              opacity: 0,
+              y: "2.5rem",
+            }, 1108 + index * 7);
+          });
+        }
         if (campusScene && verticalLayout.matches) {
           const exitParts = Array.from(
             campusScene.querySelectorAll<HTMLElement>(
@@ -1410,22 +1845,6 @@ export default function AthletesUsa() {
           }, 900);
         }
         timeline
-          .add(proofCards, {
-            delay: stagger(24),
-            duration: 72,
-            ease: "inOut(3)",
-            opacity: 1,
-            scale: 1,
-            y: "0rem",
-          }, 1120)
-          .add(proofLogos, {
-            delay: stagger(24),
-            duration: 42,
-            ease: "inOut(3)",
-            opacity: 1,
-            scale: 1,
-            x: "0rem",
-          }, 1160)
           .add(caseCards, {
             delay: stagger(24),
             duration: 72,
@@ -1433,7 +1852,7 @@ export default function AthletesUsa() {
             opacity: 1,
             scale: 1,
             y: "0rem",
-          }, 1480)
+          }, 1660)
           .add(teamCards, {
             delay: stagger(24),
             duration: 72,
@@ -1441,20 +1860,20 @@ export default function AthletesUsa() {
             opacity: 1,
             scale: 1,
             y: "0rem",
-          }, 1680);
+          }, 1860);
       }
 
       if (handoff) {
         const lastDirection = sceneDirections[6];
 
         timeline
-          .add(scenes[6], { duration: 60, ease: "linear", opacity: 0 }, 1740)
+          .add(scenes[6], { duration: 60, ease: "linear", opacity: 0 }, 2120)
           .add(handoff, {
             duration: 60,
             ease: "inOut(3)",
             opacity: 1,
             y: "0%",
-          }, 1740);
+          }, 2120);
 
         if (!reduceMotion) {
           timeline
@@ -1463,20 +1882,20 @@ export default function AthletesUsa() {
               ease: "inOut(3)",
               opacity: 0,
               x: `${lastDirection * 105}vw`,
-            }, 1740)
+            }, 2120)
             .add(copyBlocks[6], {
               duration: 60,
               ease: "inOut(3)",
               opacity: 0,
               x: `${lastDirection * 105}vw`,
-            }, 1740)
+            }, 2120)
             .add(artLayers[6]!, {
               duration: 60,
               ease: "inOut(3)",
               opacity: 0,
               scale: 0.96,
               x: `${lastDirection * -4}vw`,
-            }, 1740);
+            }, 2120);
         }
       }
     });
@@ -1559,14 +1978,14 @@ export default function AthletesUsa() {
               <p className={styles.finalNote} data-match-final>Tu talento abre puertas. Nosotros encontramos cuáles son las correctas.</p>
             </Scene>
 
-            <Scene id="support" side="left" theme="light" art={<SupportProof />}>
+            <Scene id="support" side="left" theme="light" art={<SupportJourney />}>
               <p className={styles.eyebrow} data-copy-block>ACOMPAÑAMIENTO 360°</p>
               <h2 data-heading>Antes, durante y después.</h2>
               <p className={styles.lede} data-copy-block>Una red que sigue con vos durante tu carrera universitaria y profesional.</p>
               <div className={styles.metrics} data-copy-block aria-label="Datos de Athletes USA">
-                <span><strong>2008</strong>Desde</span>
-                <span><strong>3.000+</strong>Estudiantes-atletas</span>
-                <span><strong>20.000+</strong>Entrenadores</span>
+                <span><strong><span data-metric data-target="2008" data-format="plain">2008</span></strong>Desde</span>
+                <span><strong><span data-metric data-target="3000" data-format="es-ar">3.000</span>+</strong>Estudiantes-atletas</span>
+                <span><strong><span data-metric data-target="20000" data-format="es-ar">20.000</span>+</strong>Entrenadores</span>
               </div>
               <ArrowLink to="support">Ver el acompañamiento</ArrowLink>
             </Scene>

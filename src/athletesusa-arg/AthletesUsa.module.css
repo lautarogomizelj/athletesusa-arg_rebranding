@@ -12,7 +12,7 @@
 
 .storyTrack {
   position: relative;
-  height: 1080svh;
+  height: 1310svh;
   background: var(--ausa-navy-deep);
 }
 
@@ -810,14 +810,14 @@ Fin de estilos fuera de servicio. */
 .mAttrs strong {
   display: block;
   color: rgb(248 249 252 / 92%);
-  font-size: 0.42rem;
+  font-size: 0.52rem;
   letter-spacing: 0.05em;
 }
 
 .mAttrs em {
   display: block;
   color: rgb(248 249 252 / 58%);
-  font-size: 0.52rem;
+  font-size: 0.6rem;
   font-style: normal;
   font-weight: 600;
 }
@@ -860,7 +860,7 @@ Fin de estilos fuera de servicio. */
 .mCaption {
   margin-top: 0.25rem;
   color: rgb(248 249 252 / 60%);
-  font-size: 0.46rem;
+  font-size: 0.54rem;
   font-weight: 800;
   letter-spacing: 0.22em;
 }
@@ -879,7 +879,7 @@ Fin de estilos fuera de servicio. */
 
 .mStatus [data-m-st1] {
   color: rgb(248 249 252 / 65%);
-  font-size: 0.56rem;
+  font-size: 0.62rem;
   font-weight: 600;
 }
 
@@ -894,7 +894,7 @@ Fin de estilos fuera de servicio. */
 
 .mStatus li {
   color: rgb(248 249 252 / 82%);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   font-weight: 700;
 }
 
@@ -905,7 +905,7 @@ Fin de estilos fuera de servicio. */
 
 .mStatus [data-m-st3] {
   color: #ff5d76;
-  font-size: 0.6rem;
+  font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.14em;
 }
@@ -943,14 +943,14 @@ Fin de estilos fuera de servicio. */
 .mUniHead strong {
   overflow: hidden;
   color: rgb(248 249 252 / 94%);
-  font-size: 0.46rem;
+  font-size: 0.56rem;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
 
 .mUniHead em {
   color: #ff5d76;
-  font-size: 0.54rem;
+  font-size: 0.62rem;
   font-style: normal;
   font-weight: 900;
 }
@@ -985,7 +985,7 @@ Fin de estilos fuera de servicio. */
   border-radius: 50rem;
   background: var(--ausa-red);
   color: white;
-  font-size: 0.38rem;
+  font-size: 0.46rem;
   font-weight: 900;
   letter-spacing: 0.12em;
   white-space: nowrap;
@@ -1004,7 +1004,7 @@ Fin de estilos fuera de servicio. */
 
 .mWhy > span {
   color: white;
-  font-size: 0.52rem;
+  font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.1em;
 }
@@ -1019,7 +1019,7 @@ Fin de estilos fuera de servicio. */
 
 .mWhy li {
   color: rgb(248 249 252 / 78%);
-  font-size: 0.52rem;
+  font-size: 0.6rem;
   font-weight: 600;
 }
 
@@ -1029,61 +1029,496 @@ Fin de estilos fuera de servicio. */
   font-weight: 800;
 }
 
-.proofStrip {
+/* ===== Acompañamiento 360° — El camino del atleta ===== */
+
+.sjWrap {
+  --sj-text: 0.62rem;
   position: absolute;
-  top: 5rem;
-  right: 1rem;
-  display: grid;
-  width: 9.5rem;
+  inset: 0;
+  display: flex;
   gap: 0.6rem;
+  padding: 5.2rem 1rem 6.5rem;
 }
 
-.proofStrip figure {
+.sjRail {
   position: relative;
-  aspect-ratio: 16 / 9;
-  margin: 0;
-  overflow: hidden;
-  background: #dfe3eb;
-  box-shadow: 0 0.8rem 2rem rgb(6 27 79 / 12%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 2.1rem;
+  padding-block: 0.4rem;
 }
 
-.proofStrip img {
+.sjRailSvg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  overflow: visible;
 }
 
-.proofLogo {
-  position: absolute;
-  z-index: 2;
-  top: 0.45rem;
-  right: 0.45rem;
+.sjRailBase,
+.sjRailLine {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.sjRailBase {
+  stroke: rgb(6 27 79 / 14%);
+  stroke-width: 2px;
+}
+
+.sjRailLine {
+  stroke: var(--ausa-red);
+  stroke-width: 2.5px;
+}
+
+.sjNode {
+  position: relative;
+  z-index: 1;
   display: grid;
-  width: 2.4rem;
-  height: 2.4rem;
-  padding: 0.25rem;
-  border: 1px solid rgb(6 27 79 / 12%);
-  background: white;
-  box-shadow: 0 0.5rem 1rem rgb(2 10 34 / 20%);
   place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid rgb(212 7 47 / 70%);
+  border-radius: 50%;
+  background: var(--ausa-red);
+  color: var(--ausa-white);
+  box-shadow: 0 0.35rem 0.9rem rgb(212 7 47 / 30%);
+  will-change: transform;
+}
+
+.sjNode svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.sjNode em {
+  position: absolute;
+  display: none;
+}
+
+.sjPanel {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sjCard {
+  border: 1px solid rgb(6 27 79 / 12%);
+  border-radius: 0.9rem;
+  background: #fff;
+  box-shadow: 0 0.8rem 1.8rem rgb(6 27 79 / 8%);
   will-change: opacity, transform;
 }
 
-.proofStrip .proofLogo img {
-  object-fit: contain;
+[data-sj-stage] {
+  padding: 0.65rem 0.75rem;
 }
 
-.proofStrip figcaption {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1.1rem 0.45rem 0.35rem;
-  color: white;
-  background: linear-gradient(transparent, rgb(2 10 34 / 88%));
-  font-size: 0.45rem;
-  font-weight: 700;
+.sjHead {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sjHeadIcon {
+  display: grid;
+  flex-shrink: 0;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.55rem;
+  background: rgb(212 7 47 / 10%);
+  color: var(--ausa-red);
+  place-items: center;
+}
+
+.sjHeadIcon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sjHead strong {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.sjHead p {
+  margin: 0.14rem 0 0;
+  color: rgb(6 27 79 / 62%);
+  font-size: 0.58rem;
+  line-height: 1.35;
+}
+
+.sjChecks {
+  display: grid;
+  gap: 0.28rem;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sjChecks li {
+  color: rgb(6 27 79 / 82%);
+  font-size: var(--sj-text);
+  font-weight: 600;
+}
+
+.sjChecks li::before {
+  content: "✓ ";
+  color: var(--ausa-red);
+  font-weight: 800;
+}
+
+.sjStrip {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+
+.sjEmitter {
+  display: grid;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--ausa-navy);
+  color: var(--ausa-white);
+  place-items: center;
+}
+
+.sjEmitter svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.sjDots {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.32rem;
+}
+
+.sjDots i {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background: var(--ausa-red);
+}
+
+.sjUnis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.sjUnis em {
+  padding: 0.24rem 0.45rem;
+  border: 1px dashed rgb(6 27 79 / 30%);
+  border-radius: 0.45rem;
+  color: rgb(6 27 79 / 58%);
+  font-size: var(--sj-text);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sjMilestone {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-color: rgb(212 7 47 / 45%);
+  padding: 0.55rem 0.75rem;
+}
+
+.sjMilestone > i {
+  display: grid;
+  flex-shrink: 0;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 50%;
+  background: var(--ausa-red);
+  color: var(--ausa-white);
+  place-items: center;
+}
+
+.sjMilestone > i svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.sjMilestone strong {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sjMilestone span {
+  color: rgb(6 27 79 / 60%);
+  font-size: var(--sj-text);
+  font-weight: 600;
+}
+
+.sjOrbit {
+  position: relative;
+  width: min(78%, 13rem);
+  aspect-ratio: 1;
+  margin: 0.55rem auto 0.15rem;
+}
+
+.sjOrbitSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sjOrbitSvg circle {
+  fill: none;
+  stroke: rgb(212 7 47 / 55%);
+  stroke-width: 1.5px;
+  vector-effect: non-scaling-stroke;
+}
+
+.sjCore {
+  position: absolute;
+  inset: 0;
+  width: max-content;
+  height: max-content;
+  margin: auto;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.8rem;
+  background: var(--ausa-navy);
+  color: var(--ausa-white);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sjSatTop,
+.sjSatRight,
+.sjSatBottom,
+.sjSatLeft {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: max-content;
+  max-width: 62%;
+  padding: 0.32rem 0.58rem;
+  border: 1px solid rgb(6 27 79 / 14%);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0.4rem 0.9rem rgb(6 27 79 / 10%);
+  font-size: var(--sj-text);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sjSatTop svg,
+.sjSatRight svg,
+.sjSatBottom svg,
+.sjSatLeft svg {
+  flex-shrink: 0;
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--ausa-red);
+}
+
+.sjSatTop {
+  top: -0.45rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+}
+
+.sjSatBottom {
+  bottom: -0.45rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+}
+
+.sjSatRight {
+  right: -0.9rem;
+  top: 50%;
+  margin-top: -0.85rem;
+}
+
+.sjSatLeft {
+  left: -0.9rem;
+  top: 50%;
+  margin-top: -0.85rem;
+}
+
+.sjGrad {
+  position: absolute;
+  bottom: 16%;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: center;
+  gap: 0.12rem;
+  color: var(--ausa-red);
+}
+
+.sjGrad svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.sjGrad b {
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.sjNet {
+  position: relative;
+  flex: 1;
+  min-height: 9.5rem;
+  margin-top: 0.55rem;
+}
+
+.sjNetSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sjNetSvg path {
+  fill: none;
+  stroke: rgb(212 7 47 / 60%);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.sjNetCore {
+  position: absolute;
+  bottom: 8%;
+  left: 6%;
+  display: grid;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--ausa-navy);
+  color: var(--ausa-white);
+  place-items: center;
+}
+
+.sjNetCore svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.sjNetTopLeft,
+.sjNetTopRight,
+.sjNetMidRight,
+.sjNetBottomRight {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.32rem 0.58rem;
+  border: 1px solid rgb(6 27 79 / 14%);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0.4rem 0.9rem rgb(6 27 79 / 10%);
+  font-size: var(--sj-text);
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sjNetTopLeft svg,
+.sjNetTopRight svg,
+.sjNetMidRight svg,
+.sjNetBottomRight svg {
+  flex-shrink: 0;
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--ausa-red);
+}
+
+.sjNetTopLeft {
+  top: 4%;
+  left: 2%;
+}
+
+.sjNetTopRight {
+  top: 0;
+  left: 48%;
+}
+
+.sjNetMidRight {
+  top: 34%;
+  right: 0;
+}
+
+.sjNetBottomRight {
+  bottom: 2%;
+  right: 5%;
+}
+
+.sjFinal {
+  border-color: rgb(212 7 47 / 50%);
+  padding: 0.65rem 0.8rem;
+}
+
+.sjFinal strong {
+  color: var(--ausa-red);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sjFinal p {
+  margin: 0.28rem 0 0.55rem;
+  color: rgb(6 27 79 / 78%);
+  font-size: var(--sj-text);
+  line-height: 1.4;
+}
+
+.sjFinalPath {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sjFinalPath em {
+  flex-shrink: 0;
+  padding: 0.26rem 0.55rem;
+  border: 1px solid rgb(212 7 47 / 55%);
+  border-radius: 999px;
+  color: var(--ausa-red);
+  font-size: 0.54rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sjFinalPath i {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ausa-red), rgb(212 7 47 / 35%));
 }
 
 .metrics {
@@ -1095,8 +1530,8 @@ Fin de estilos fuera de servicio. */
 }
 
 .metrics span {
-  padding: 0.8rem 0.45rem;
-  font-size: 0.48rem;
+  padding: 0.9rem 0.5rem;
+  font-size: 0.55rem;
   font-weight: 700;
   line-height: 1.25;
   text-transform: uppercase;
@@ -1110,7 +1545,7 @@ Fin de estilos fuera de servicio. */
   display: block;
   margin-bottom: 0.2rem;
   color: var(--ausa-red);
-  font-size: clamp(0.9rem, 4vw, 1.45rem);
+  font-size: clamp(1.5rem, 6vw, 2.6rem);
   letter-spacing: -0.04em;
 }
 
@@ -1778,7 +2213,7 @@ Fin de estilos fuera de servicio. */
   }
 
   .mLabel {
-    font-size: 0.54rem;
+    font-size: 0.6rem;
   }
 
   .mStatus {
@@ -1795,11 +2230,11 @@ Fin de estilos fuera de servicio. */
   }
 
   .mAttrs strong {
-    font-size: 0.46rem;
+    font-size: 0.56rem;
   }
 
   .mAttrs em {
-    font-size: 0.56rem;
+    font-size: 0.66rem;
   }
 
   .mCore {
@@ -1807,7 +2242,7 @@ Fin de estilos fuera de servicio. */
   }
 
   .mValue {
-    font-size: 1.15rem;
+    font-size: 1.3rem;
   }
 
   .mUni {
@@ -1815,23 +2250,23 @@ Fin de estilos fuera de servicio. */
   }
 
   .mUniHead strong {
-    font-size: 0.52rem;
+    font-size: 0.62rem;
   }
 
   .mUniHead em {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   .mBadge {
-    font-size: 0.42rem;
+    font-size: 0.5rem;
   }
 
   .mWhy > span {
-    font-size: 0.56rem;
+    font-size: 0.64rem;
   }
 
   .mWhy li {
-    font-size: 0.58rem;
+    font-size: 0.66rem;
   }
 
   .finalNote {
@@ -1839,15 +2274,54 @@ Fin de estilos fuera de servicio. */
     max-width: 30rem;
   }
 
-  .proofStrip {
-    top: 7rem;
-    right: 2rem;
-    width: 26rem;
-    grid-template-columns: repeat(2, 1fr);
+  .sjWrap {
+    --sj-text: 0.68rem;
+    gap: 0.8rem;
+    padding: 6.5rem 2rem 5rem;
   }
 
-  .proofStrip figure:first-child {
-    grid-column: 1 / -1;
+  .sjRail {
+    width: 2.4rem;
+  }
+
+  .sjNode {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .sjNode svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  [data-sj-stage] {
+    padding: 0.85rem 1rem;
+  }
+
+  .sjHead strong {
+    font-size: 0.78rem;
+  }
+
+  .sjHead p {
+    font-size: 0.62rem;
+  }
+
+  .sjChecks {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.32rem 1rem;
+  }
+
+  .sjOrbit {
+    width: min(58%, 14.5rem);
+  }
+
+  .sjCore {
+    font-size: 0.64rem;
+  }
+
+  .sjMilestone strong,
+  .sjFinal strong {
+    font-size: 0.78rem;
   }
 
   .casesGrid {
@@ -1949,14 +2423,36 @@ Fin de estilos fuera de servicio. */
     width: min(42%, 34rem);
   }
 
-  .proofStrip {
-    right: max(3rem, calc((100vw - 86rem) / 2));
-    width: 34rem;
-    grid-template-columns: repeat(3, 1fr);
+  .sjWrap {
+    left: 47%;
+    gap: 1rem;
+    padding: 6rem 0 5.5rem;
   }
 
-  .proofStrip figure:first-child {
-    grid-column: auto;
+  .sjRail {
+    width: 2.7rem;
+  }
+
+  .sjNode em {
+    display: block;
+    top: 50%;
+    left: calc(100% + 0.55rem);
+    color: rgb(6 27 79 / 55%);
+    font-size: 0.52rem;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transform: translateY(-50%);
+    white-space: nowrap;
+  }
+
+  .sjPanel {
+    padding-left: 2.4rem;
+  }
+
+  .sjOrbit {
+    width: min(52%, 15rem);
   }
 
   .casesGrid {
@@ -2064,11 +2560,11 @@ Fin de estilos fuera de servicio. */
   }
 
   .mAttrs strong {
-    font-size: 0.56rem;
+    font-size: 0.6rem;
   }
 
   .mAttrs em {
-    font-size: 0.66rem;
+    font-size: 0.7rem;
   }
 
   .mColCore {
@@ -2089,7 +2585,7 @@ Fin de estilos fuera de servicio. */
 
   .mCaption {
     margin-top: 0.35rem;
-    font-size: 0.52rem;
+    font-size: 0.56rem;
   }
 
   .mStatus {
@@ -2102,7 +2598,7 @@ Fin de estilos fuera de servicio. */
   }
 
   .mStatus li {
-    font-size: 0.58rem;
+    font-size: 0.64rem;
   }
 
   .mStatus [data-m-st3] {
@@ -2149,7 +2645,7 @@ Fin de estilos fuera de servicio. */
   .mBadge {
     top: -0.6rem;
     padding: 0.22rem 0.55rem;
-    font-size: 0.46rem;
+    font-size: 0.5rem;
   }
 
   .mWhy {
@@ -2167,7 +2663,30 @@ Fin de estilos fuera de servicio. */
   }
 
   .mWhy li {
-    font-size: 0.64rem;
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .sjWrap {
+    gap: 0.4rem;
+    padding-block: 4.5rem 3.5rem;
+  }
+
+  .sjPanel {
+    gap: 0.35rem;
+  }
+
+  [data-sj-stage] {
+    padding: 0.5rem 0.7rem;
+  }
+
+  .sjOrbit {
+    width: min(60%, 10rem);
+  }
+
+  .sjNet {
+    min-height: 7rem;
   }
 }
 
