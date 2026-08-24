@@ -64,6 +64,71 @@ const initialEvaluation: EvaluationData = {
   whatsapp: "",
 };
 
+type SuccessCase = {
+  detail: string;
+  image: string | null;
+  logo?: string | null;
+  name: string;
+};
+
+const successCases: SuccessCase[] = [
+  {
+    name: "Emil Jaaskelainen",
+    detail: "Fútbol · St. Louis City SC",
+    image: emilJaaskelainenCase,
+    logo: stLouisCityLogo,
+  },
+  {
+    name: "Delfina Schmidt",
+    detail: "Vóley · Rio Grande",
+    image: delfinaSchmidtCase,
+    logo: rioGrandeLogo,
+  },
+  {
+    name: "Delfi González",
+    detail: "Hockey · LIU Sharks",
+    image: delfiGonzalezCase,
+    logo: liuSharksLogo,
+  },
+  { name: "Próximo caso", detail: "En preparación", image: null },
+  { name: "Próximo caso", detail: "En preparación", image: null },
+  { name: "Próximo caso", detail: "En preparación", image: null },
+];
+
+type TeamMember = {
+  bio: string;
+  image: string | null;
+  name: string;
+  role: string;
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "Nombre y apellido",
+    role: "Rol · Área",
+    bio: "Bio corta: recorrido y rol dentro del equipo.",
+    image: null,
+  },
+  {
+    name: "Nombre y apellido",
+    role: "Rol · Área",
+    bio: "Bio corta: recorrido y rol dentro del equipo.",
+    image: null,
+  },
+  {
+    name: "Nombre y apellido",
+    role: "Rol · Área",
+    bio: "Bio corta: recorrido y rol dentro del equipo.",
+    image: null,
+  },
+  {
+    name: "Nombre y apellido",
+    role: "Rol · Área",
+    bio: "Bio corta: recorrido y rol dentro del equipo.",
+    image: null,
+  },
+];
+
 function Brand() {
   return (
     <span className={styles.brand} aria-label="Athletes USA">
@@ -133,26 +198,100 @@ function OutcomeOrbit() {
 }
 
 function JourneyPath() {
-  const steps = ["Evaluación", "Perfil", "Becas", "Admisión", "Soporte"];
+  const steps = [
+    {
+      label: "Evaluación",
+      info: "Analizamos tu perfil deportivo y académico para medir tu nivel y definir qué universidades se ajustan a vos.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="5" y="4" width="14" height="17" rx="2" />
+          <path d="M9 2.5h6v3H9z" />
+          <path d="m9 13.5 2 2 4-4.5" />
+        </svg>
+      ),
+    },
+    {
+      label: "Perfil",
+      info: "Producimos tu video deportivo y armamos el expediente académico que los coaches universitarios quieren ver.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2.5" y="6.5" width="13" height="11" rx="2" />
+          <path d="m15.5 10.5 6-3v9l-6-3" />
+        </svg>
+      ),
+    },
+    {
+      label: "Becas",
+      info: "Promocionamos tu perfil ante una red de más de 20.000 coaches de universidades que dan ayuda económica.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m12 3.5 10 5-10 5-10-5 10-5Z" />
+          <path d="M6.5 10.8V16c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8v-5.2" />
+          <path d="M22 8.5v5" />
+        </svg>
+      ),
+    },
+    {
+      label: "Admisión",
+      info: "Coordinamos postulaciones, papeleo y visa para que llegues a tu universidad sin vueltas ni demoras.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="4" y="3" width="16" height="18" rx="2" />
+          <circle cx="12" cy="10" r="3.2" />
+          <path d="M9 17h6" />
+        </svg>
+      ),
+    },
+    {
+      label: "Soporte",
+      info: "Te acompañamos antes de viajar, durante toda tu carrera universitaria y también después de graduarte.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 13a8 8 0 0 1 16 0" />
+          <rect x="2.8" y="13" width="4.2" height="6.5" rx="1.8" />
+          <rect x="17" y="13" width="4.2" height="6.5" rx="1.8" />
+          <path d="M20.5 19.5v.7a2.3 2.3 0 0 1-2.3 2.3H14" />
+        </svg>
+      ),
+    },
+  ];
 
   return (
     <div className={styles.journeyArt} aria-hidden="true">
-      <svg viewBox="0 0 220 660" preserveAspectRatio="none">
-        <path className={styles.journeyTrack} d="M110 20V640" />
-        <path
-          className={styles.journeyProgress}
-          data-journey-progress
-          d="M110 20V640"
-        />
-      </svg>
-      <ol>
-        {steps.map((step, index) => (
-          <li data-journey-item key={step}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            {step}
-          </li>
+      <div className={styles.journeyCards}>
+        {steps.map((step) => (
+          <article className={styles.journeyCard} data-journey-card key={step.label}>
+            <span className={styles.journeyCardIcon}>{step.icon}</span>
+            <strong>{step.label}</strong>
+            <p>{step.info}</p>
+          </article>
         ))}
-      </ol>
+      </div>
+      <div className={styles.journeyRail}>
+        <svg className={styles.journeyLineVertical} viewBox="0 0 220 660" preserveAspectRatio="none">
+          <path className={styles.journeyTrack} d="M110 20V640" />
+          <path
+            className={styles.journeyProgress}
+            data-journey-progress
+            d="M110 20V640"
+          />
+        </svg>
+        <svg className={styles.journeyLineHorizontal} viewBox="0 0 620 10" preserveAspectRatio="none">
+          <path className={styles.journeyTrack} d="M0 5H620" />
+          <path
+            className={styles.journeyProgress}
+            data-journey-progress
+            d="M0 5H620"
+          />
+        </svg>
+        <ol>
+          {steps.map((step, index) => (
+            <li data-journey-item key={step.label}>
+              <span>{index + 1}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   );
 }
@@ -220,6 +359,54 @@ function SupportProof() {
         </span>
         <figcaption>Delfi González</figcaption>
       </figure>
+    </div>
+  );
+}
+
+function CasesGrid() {
+  return (
+    <div className={styles.casesGrid} aria-label="Casos de éxito">
+      {successCases.map((item, index) => (
+        <figure className={styles.caseCard} data-case-card key={`${item.name}-${index}`}>
+          {item.image ? (
+            <img src={item.image} alt={`${item.name}, ${item.detail}`} loading="lazy" />
+          ) : (
+            <span className={styles.caseCardPlaceholder} aria-hidden="true">
+              {item.name.charAt(0)}
+            </span>
+          )}
+          {item.logo ? (
+            <span className={styles.caseLogo} aria-hidden="true">
+              <img src={item.logo} alt="" loading="lazy" />
+            </span>
+          ) : null}
+          <figcaption>
+            <strong>{item.name}</strong>
+            <span>{item.detail}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
+
+function TeamGrid() {
+  return (
+    <div className={styles.teamGrid} aria-label="Nuestro equipo">
+      {teamMembers.map((member, index) => (
+        <article className={styles.teamCard} data-team-card key={`${member.name}-${index}`}>
+          {member.image ? (
+            <img src={member.image} alt={`Foto de ${member.name}`} loading="lazy" />
+          ) : (
+            <span className={styles.teamAvatar} aria-hidden="true">
+              {member.name.charAt(0)}
+            </span>
+          )}
+          <strong>{member.name}</strong>
+          <span>{member.role}</span>
+          <p>{member.bio}</p>
+        </article>
+      ))}
     </div>
   );
 }
@@ -444,11 +631,17 @@ export default function AthletesUsa() {
       const sceneDirections = scenes.map((scene) =>
         scene.dataset.side === "right" ? 1 : -1,
       );
-      const journeyProgress = root.querySelector<SVGPathElement>(
-        "[data-journey-progress]",
+      const journeyProgressLines = Array.from(
+        root.querySelectorAll<SVGPathElement>("[data-journey-progress]"),
       );
       const journeyItems = Array.from(
         root.querySelectorAll<HTMLElement>("[data-journey-item]"),
+      );
+      const journeyBadges = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-journey-item] span"),
+      );
+      const journeyCards = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-journey-card]"),
       );
       const orbit = root.querySelector<HTMLElement>("[data-orbit]");
       const orbitCore = root.querySelector<HTMLElement>("[data-orbit-core]")!;
@@ -472,9 +665,15 @@ export default function AthletesUsa() {
       const proofLogos = Array.from(
         root.querySelectorAll<HTMLElement>("[data-proof-logo]"),
       );
+      const caseCards = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-case-card]"),
+      );
+      const teamCards = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-team-card]"),
+      );
 
       const setActiveScene = (progress: number) => {
-        const activeIndex = [0.16, 0.36, 0.56, 0.76, 0.94]
+        const activeIndex = [0.084, 0.307, 0.418, 0.529, 0.64, 0.751, 0.862, 0.982]
           .findIndex((limit) => progress < limit);
 
         scenes.forEach((scene, index) => {
@@ -484,6 +683,13 @@ export default function AthletesUsa() {
           scene.setAttribute("aria-hidden", String(!isActive));
         });
       };
+
+      const journeyWideLayout =
+        root.ownerDocument.defaultView?.matchMedia(
+          "(min-width: 768px) and (min-height: 640px)",
+        ).matches ?? false;
+      const journeyCardDim = journeyWideLayout ? 0.34 : 0;
+      const journeyCardDimScale = journeyWideLayout ? "0.97" : "0.96";
 
       scenes.forEach((scene, index) => {
         const direction = sceneDirections[index];
@@ -526,14 +732,25 @@ export default function AthletesUsa() {
           y: reduceMotion ? "0%" : "100%",
         });
       }
-      if (journeyProgress && !reduceMotion) {
-        utils.set(journeyProgress, {
+      if (journeyProgressLines.length && !reduceMotion) {
+        utils.set(journeyProgressLines, {
           strokeDasharray: 620,
           strokeDashoffset: 620,
         });
       }
       if (!reduceMotion) {
         utils.set(journeyItems, { opacity: 0.42, scale: 0.92, x: "1rem" });
+        if (journeyCards.length) {
+          utils.set(journeyCards, {
+            opacity: journeyCardDim,
+            scale: journeyCardDimScale,
+          });
+          utils.set(journeyCards[0], {
+            opacity: 1,
+            scale: 1,
+            borderColor: "rgba(212, 7, 47, 0.5)",
+          });
+        }
         utils.set(profileBars, { scaleX: 0.18, transformOrigin: "0% 50%" });
         utils.set(network, { opacity: 0.3 });
         utils.set(networkNodes, { opacity: 0, scale: 0.78 });
@@ -541,6 +758,8 @@ export default function AthletesUsa() {
         utils.set(offerTags, { opacity: 0, y: "0.8rem" });
         utils.set(proofCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
         utils.set(proofLogos, { opacity: 0, scale: 0.78, x: "0.8rem" });
+        utils.set(caseCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
+        utils.set(teamCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
       }
 
       setActiveScene(0);
@@ -640,9 +859,12 @@ export default function AthletesUsa() {
       };
 
       addTransition(0, 1, 120, 80);
-      addTransition(1, 2, 320, 80);
-      addTransition(2, 3, 520, 80);
-      addTransition(3, 4, 720, 80);
+      addTransition(1, 2, 520, 80);
+      addTransition(2, 3, 720, 80);
+      addTransition(3, 4, 920, 80);
+      addTransition(4, 5, 1120, 80);
+      addTransition(5, 6, 1320, 80);
+      addTransition(6, 7, 1520, 80);
 
       if (!reduceMotion) {
         if (orbit) {
@@ -673,11 +895,11 @@ export default function AthletesUsa() {
             y: "-2vh",
           }, 0);
 
-        if (journeyProgress) {
-          timeline.add(journeyProgress, {
+        if (journeyProgressLines.length) {
+          timeline.add(journeyProgressLines, {
             duration: 108,
             ease: "linear",
-            strokeDashoffset: 0,
+            strokeDashoffset: 496,
           }, 202);
         }
         timeline
@@ -685,48 +907,114 @@ export default function AthletesUsa() {
             delay: stagger(14),
             duration: 52,
             ease: "inOut(3)",
-            opacity: 1,
-            scale: 1,
-            x: "0rem",
-          }, 202)
+            opacity: 0.45,
+            scale: 0.96,
+            x: "0.4rem",
+          }, 202);
+
+        const activateStage = (index: number, start: number) => {
+          const duration = index === 0 ? 36 : 40;
+          if (journeyProgressLines.length) {
+            timeline.add(journeyProgressLines, {
+              duration,
+              ease: "inOut(3)",
+              strokeDashoffset: 620 - Math.round((620 * (index + 1)) / 5),
+            }, start);
+          }
+          if (journeyItems[index]) {
+            timeline.add(journeyItems[index], {
+              duration,
+              ease: "inOut(3)",
+              opacity: 1,
+              scale: 1.12,
+              x: "0rem",
+            }, start);
+          }
+          if (journeyBadges[index]) {
+            timeline.add(journeyBadges[index], {
+              duration,
+              ease: "inOut(3)",
+              backgroundColor: "#d4072f",
+              borderColor: "#d4072f",
+              color: "#f8f9fc",
+            }, start);
+          }
+          if (journeyCards[index]) {
+            timeline.add(journeyCards[index], {
+              duration,
+              ease: "inOut(3)",
+              opacity: 1,
+              scale: 1,
+              borderColor: "rgba(212, 7, 47, 0.5)",
+            }, start);
+          }
+          if (index === 0) return;
+
+          const prev = index - 1;
+          if (journeyItems[prev]) {
+            timeline.add(journeyItems[prev], {
+              duration,
+              ease: "inOut(3)",
+              opacity: 1,
+              scale: 1,
+              x: "0rem",
+            }, start);
+          }
+          if (journeyCards[prev]) {
+            timeline.add(journeyCards[prev], {
+              duration,
+              ease: "inOut(3)",
+              opacity: journeyCardDim,
+              scale: journeyCardDimScale,
+              borderColor: "rgba(6, 27, 79, 0.14)",
+            }, start);
+          }
+        };
+
+        activateStage(0, 256);
+        activateStage(1, 312);
+        activateStage(2, 368);
+        activateStage(3, 424);
+        activateStage(4, 480);
+        timeline
           .add(profileBars, {
             delay: stagger(12),
             duration: 70,
             ease: "inOut(3)",
             scaleX: 1,
-          }, 405)
+          }, 605)
           .add(network, {
             duration: 96,
             ease: "linear",
             opacity: 1,
-          }, 410)
+          }, 610)
           .add(networkNodes, {
             delay: stagger(14),
             duration: 46,
             ease: "inOut(3)",
             opacity: 1,
             scale: 1,
-          }, 410)
+          }, 610)
           .add(offerCard, {
             duration: 104,
             ease: "inOut(3)",
             rotate: 0,
             y: "0rem",
-          }, 604)
+          }, 804)
           .add(offerTags, {
             delay: stagger(18),
             duration: 50,
             ease: "inOut(3)",
             opacity: 1,
             y: "0rem",
-          }, 614)
+          }, 814)
           .add(mediaImages[3]!, {
             duration: 108,
             ease: "linear",
             scale: 1.03,
             x: "0vw",
             y: "-2vh",
-          }, 604)
+          }, 804)
           .add(proofCards, {
             delay: stagger(24),
             duration: 72,
@@ -734,7 +1022,7 @@ export default function AthletesUsa() {
             opacity: 1,
             scale: 1,
             y: "0rem",
-          }, 804)
+          }, 1004)
           .add(proofLogos, {
             delay: stagger(24),
             duration: 42,
@@ -742,40 +1030,58 @@ export default function AthletesUsa() {
             opacity: 1,
             scale: 1,
             x: "0rem",
-          }, 840);
+          }, 1040)
+          .add(caseCards, {
+            delay: stagger(24),
+            duration: 72,
+            ease: "inOut(3)",
+            opacity: 1,
+            scale: 1,
+            y: "0rem",
+          }, 1404)
+          .add(teamCards, {
+            delay: stagger(24),
+            duration: 72,
+            ease: "inOut(3)",
+            opacity: 1,
+            scale: 1,
+            y: "0rem",
+          }, 1604);
       }
 
       if (handoff) {
+        const lastDirection = sceneDirections[7];
+
         timeline
-          .add(scenes[4], { duration: 60, ease: "linear", opacity: 0 }, 940)
+          .add(scenes[7], { duration: 60, ease: "linear", opacity: 0 }, 1740)
           .add(handoff, {
             duration: 60,
             ease: "inOut(3)",
             opacity: 1,
             y: "0%",
-          }, 940);
+          }, 1740);
 
         if (!reduceMotion) {
           timeline
-            .add(headingLines[4], {
+            .add(headingLines[7], {
               duration: 60,
               ease: "inOut(3)",
               opacity: 0,
-              x: "-105vw",
-            }, 940)
-            .add(copyBlocks[4], {
+              x: `${lastDirection * 105}vw`,
+            }, 1740)
+            .add(copyBlocks[7], {
               duration: 60,
               ease: "inOut(3)",
               opacity: 0,
-              x: "-105vw",
-            }, 940)
-            .add(artLayers[4]!, {
+              x: `${lastDirection * 105}vw`,
+            }, 1740)
+            .add(artLayers[7]!, {
               duration: 60,
               ease: "inOut(3)",
               opacity: 0,
               scale: 0.96,
-              x: "-4vw",
-            }, 940);
+              x: `${lastDirection * -4}vw`,
+            }, 1740);
         }
       }
     });
@@ -865,6 +1171,27 @@ export default function AthletesUsa() {
                 <span><strong>20.000+</strong>Entrenadores</span>
               </div>
               <ArrowLink to="support">Ver el acompañamiento</ArrowLink>
+            </Scene>
+
+            <Scene id="about" side="right" theme="navy" art={null}>
+              <p className={styles.eyebrow} data-copy-block>QUIÉNES SOMOS</p>
+              <h2 data-heading>Una agencia que nació del deporte.</h2>
+              <p className={styles.lede} data-copy-block>Desde 2008 acompañamos a atletas latinoamericanos hacia universidades de Estados Unidos: evaluación, reclutamiento y gestión completa del proceso.</p>
+              <Link className={styles.arrowLink} data-copy-block to="#evaluation">Quiero mi evaluación</Link>
+            </Scene>
+
+            <Scene id="cases" side="left" theme="dark" art={<CasesGrid />}>
+              <p className={styles.eyebrow} data-copy-block>CASOS DE ÉXITO</p>
+              <h2 data-heading>Historias que ya están pasando.</h2>
+              <p className={styles.lede} data-copy-block>Atletas que llegaron con una ilusión y hoy estudian y compiten en Estados Unidos.</p>
+              <Link className={styles.arrowLink} data-copy-block to="#evaluation">Quiero ser el próximo</Link>
+            </Scene>
+
+            <Scene id="team" side="right" theme="light" art={<TeamGrid />}>
+              <p className={styles.eyebrow} data-copy-block>NUESTRO EQUIPO</p>
+              <h2 data-heading>Gente que vivió el camino y te guía en el tuyo.</h2>
+              <p className={styles.lede} data-copy-block>Ex estudiantes-atletas y especialistas en el proceso deportivo, académico y de visa.</p>
+              <Link className={styles.arrowLink} data-copy-block to="#evaluation">Empezá tu evaluación</Link>
             </Scene>
                 <div className={styles.handoff} data-handoff aria-hidden="true" />
           </div>

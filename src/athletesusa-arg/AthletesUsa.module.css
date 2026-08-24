@@ -12,7 +12,7 @@
 
 .storyTrack {
   position: relative;
-  height: 600svh;
+  height: 1080svh;
   background: var(--ausa-navy-deep);
 }
 
@@ -361,18 +361,123 @@
   position: absolute;
   top: 3.5rem;
   right: 0;
-  width: 52%;
+  left: 0;
+  width: auto;
   height: calc(100% - 3.5rem);
-  opacity: 0.66;
+  opacity: 0.92;
 }
 
-.journeyArt svg {
+.journeyCards {
+  position: absolute;
+  z-index: 2;
+  top: 4%;
+  right: 0;
+  bottom: auto;
+  left: 3.6rem;
+  height: 24%;
+}
+
+.journeyCard {
+  position: absolute;
+  inset: 0;
+  margin: auto 0 auto auto;
+  width: max-content;
+  max-width: min(calc(100% - 1rem), 16rem);
+  height: max-content;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.85rem 1rem 0.95rem;
+  border: 1px solid rgb(6 27 79 / 14%);
+  border-radius: 0.9rem;
+  color: var(--ausa-navy);
+  background: rgb(255 255 255 / 96%);
+  box-shadow: 0 0.9rem 2.2rem rgb(6 27 79 / 16%);
+  will-change: opacity, transform;
+}
+
+.journeyCard:not(:first-child) {
+  opacity: 0;
+}
+
+.journeyCard strong {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.journeyCard p {
+  margin: 0;
+  font-size: 0.64rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgb(6 27 79 / 74%);
+}
+
+.journeyCardIcon {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 0.55rem;
+  background: rgb(212 7 47 / 10%);
+  color: var(--ausa-red);
+  place-items: center;
+}
+
+.journeyCardIcon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.journeyRail {
+  position: absolute;
+  inset: 30% 0.7rem 38% 2.6rem;
+}
+
+.journeyRail ol {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  list-style: none;
+}
+
+.journeyRail li {
+  display: grid;
+  place-items: center;
+}
+
+.journeyRail li span {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: var(--ausa-white);
+  font-size: 0.66rem;
+  font-weight: 800;
+  place-items: center;
+}
+
+.journeyRail .journeyLineVertical {
   position: absolute;
   top: 0;
-  right: 1.35rem;
+  right: auto;
+  left: 0;
   width: 2rem;
   height: 100%;
   overflow: visible;
+}
+
+.journeyLineHorizontal {
+  display: none;
 }
 
 .journeyTrack,
@@ -389,39 +494,18 @@
   stroke: var(--ausa-red);
 }
 
-.journeyArt ol {
-  position: absolute;
-  top: 12%;
-  right: 0.7rem;
-  bottom: 12%;
-  display: flex;
-  margin: 0;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 0;
-  list-style: none;
+.journeyTrack,
+.journeyProgress {
+  fill: none;
+  stroke-width: 4;
 }
 
-.journeyArt li {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  font-size: 0.58rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+.journeyTrack {
+  stroke: rgb(6 27 79 / 14%);
 }
 
-.journeyArt li span {
-  display: grid;
-  width: 1.8rem;
-  aspect-ratio: 1;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  background: var(--ausa-white);
-  font-size: 0.55rem;
-  place-items: center;
+.journeyProgress {
+  stroke: var(--ausa-red);
 }
 
 .networkArt {
@@ -540,11 +624,6 @@
   position: absolute;
   top: 13%;
   right: 1rem;
-}
-
-.scene[data-side="right"] .journeyArt {
-  right: auto;
-  left: -2.5rem;
 }
 
 .scene[data-side="right"] .campusArt {
@@ -674,6 +753,146 @@
   color: var(--ausa-red);
   font-size: clamp(0.9rem, 4vw, 1.45rem);
   letter-spacing: -0.04em;
+}
+
+.casesGrid {
+  position: absolute;
+  top: 5.5rem;
+  right: 1rem;
+  display: grid;
+  width: 11.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.caseCard {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #dfe3eb;
+  box-shadow: 0 0.8rem 2rem rgb(6 27 79 / 24%);
+}
+
+.caseCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.caseCardPlaceholder {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  color: rgb(248 249 252 / 34%);
+  background: linear-gradient(145deg, rgb(6 27 79 / 88%), rgb(2 10 34 / 94%));
+  place-items: center;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-style: italic;
+  font-weight: 800;
+}
+
+.caseLogo {
+  position: absolute;
+  z-index: 2;
+  top: 0.4rem;
+  right: 0.4rem;
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  padding: 0.2rem;
+  border: 1px solid rgb(6 27 79 / 12%);
+  background: white;
+  box-shadow: 0 0.5rem 1rem rgb(2 10 34 / 20%);
+  place-items: center;
+}
+
+.caseLogo img {
+  object-fit: contain;
+}
+
+.caseCard figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  padding: 1.1rem 0.5rem 0.4rem;
+  color: white;
+  background: linear-gradient(transparent, rgb(2 10 34 / 88%));
+  font-size: 0.48rem;
+  line-height: 1.3;
+}
+
+.caseCard figcaption strong {
+  text-transform: uppercase;
+}
+
+.caseCard figcaption span {
+  opacity: 0.78;
+}
+
+.teamGrid {
+  position: absolute;
+  top: 5.5rem;
+  left: 1rem;
+  display: grid;
+  width: 12.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.teamCard {
+  overflow: hidden;
+  padding: 0.55rem;
+  border: 1px solid rgb(6 27 79 / 14%);
+  border-radius: 0.7rem;
+  background: white;
+  box-shadow: 0 0.8rem 2rem rgb(6 27 79 / 12%);
+}
+
+.teamCard img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 0.45rem;
+}
+
+.teamAvatar {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 0.45rem;
+  color: var(--ausa-red);
+  background: linear-gradient(145deg, #eef1f8, #dfe3eb);
+  border-radius: 0.45rem;
+  place-items: center;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-style: italic;
+  font-weight: 800;
+}
+
+.teamCard strong {
+  display: block;
+  font-size: 0.52rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.teamCard > span:not(.teamAvatar) {
+  display: block;
+  margin-top: 0.12rem;
+  color: var(--ausa-red);
+  font-size: 0.44rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.teamCard p {
+  margin: 0.3rem 0 0;
+  color: rgb(6 27 79 / 72%);
+  font-size: 0.44rem;
+  line-height: 1.35;
 }
 
 .evaluation {
@@ -1063,40 +1282,100 @@
     width: 28rem;
   }
 
+  .sectionContent {
+    width: min(46%, 35rem);
+  }
+
   .journeyArt {
-    top: 18%;
+    top: 14%;
     right: 3%;
-    width: 44%;
-    height: 58%;
+    left: auto;
+    width: clamp(27rem, 46%, 46rem);
+    height: 66%;
   }
 
   .scene[data-side="right"] .journeyArt {
     right: auto;
-    left: 0;
+    left: 3%;
   }
 
-  .journeyArt svg {
-    top: 50%;
-    right: 5%;
-    width: 88%;
-    height: 3rem;
-    transform: rotate(-90deg) translateX(50%);
-    transform-origin: center;
-  }
-
-  .journeyArt ol {
-    top: auto;
+  .journeyCards {
+    top: 0;
     right: 0;
-    bottom: 0;
+    bottom: auto;
     left: 0;
-    align-items: flex-start;
-    flex-direction: row;
+    height: 58%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
+    align-content: center;
   }
 
-  .journeyArt li {
-    width: 18%;
-    align-items: flex-start;
-    flex-direction: column;
+  .journeyCard {
+    position: relative;
+    inset: auto;
+    margin: 0;
+    width: auto;
+    max-width: none;
+    height: auto;
+    padding: 0.95rem 0.8rem 1.05rem;
+    gap: 0.55rem;
+  }
+
+  .journeyCard:not(:first-child) {
+    opacity: 1;
+  }
+
+  .journeyCardIcon {
+    width: 2.4rem;
+    border-radius: 0.65rem;
+  }
+
+  .journeyCardIcon svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .journeyCard strong {
+    font-size: 0.76rem;
+  }
+
+  .journeyCard p {
+    font-size: 0.68rem;
+  }
+
+  .journeyRail {
+    inset: auto 0 0 0;
+    height: 32%;
+  }
+
+  .journeyRail ol {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .journeyRail li span {
+    width: 2.1rem;
+    font-size: 0.7rem;
+  }
+
+  .journeyRail .journeyLineVertical {
+    display: none;
+  }
+
+  .journeyLineHorizontal {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 1.05rem;
+    width: calc(100% - 2.1rem);
+    height: 1.5rem;
+    transform: translateY(-50%);
+    overflow: visible;
+  }
+
+  .journeyLineHorizontal path {
+    stroke-width: 3;
   }
 
   .networkArt {
@@ -1136,6 +1415,48 @@
 
   .proofStrip figure:first-child {
     grid-column: 1 / -1;
+  }
+
+  .casesGrid {
+    top: 7rem;
+    right: 2rem;
+    width: 30rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+  }
+
+  .caseCard figcaption {
+    font-size: 0.56rem;
+    padding: 1.4rem 0.6rem 0.5rem;
+  }
+
+  .caseLogo {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .teamGrid {
+    top: 7rem;
+    left: 2rem;
+    width: 26rem;
+    gap: 0.7rem;
+  }
+
+  .teamCard {
+    padding: 0.75rem;
+    border-radius: 0.9rem;
+  }
+
+  .teamCard strong {
+    font-size: 0.6rem;
+  }
+
+  .teamCard > span:not(.teamAvatar) {
+    font-size: 0.5rem;
+  }
+
+  .teamCard p {
+    font-size: 0.5rem;
   }
 
   .metrics {
@@ -1192,7 +1513,7 @@
   }
 
   .sectionContent {
-    width: min(58%, 52rem);
+    width: min(42%, 34rem);
   }
 
   .proofStrip {
@@ -1203,6 +1524,16 @@
 
   .proofStrip figure:first-child {
     grid-column: auto;
+  }
+
+  .casesGrid {
+    right: max(3rem, calc((100vw - 86rem) / 2));
+    width: 36rem;
+  }
+
+  .teamGrid {
+    left: max(3rem, calc((100vw - 86rem) / 2));
+    width: 30rem;
   }
 
   .detailHero,
@@ -1221,6 +1552,23 @@
   .success button {
     transform: none !important;
     transition: none !important;
+  }
+
+  .journeyCard {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 767px) {
+  .journeyCard:not(:first-child) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-height: 639px) {
+  .journeyCard:not(:first-child) {
+    display: none;
   }
 }
 
