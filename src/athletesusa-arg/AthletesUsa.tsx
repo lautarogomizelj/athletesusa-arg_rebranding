@@ -1,4 +1,5 @@
 import {
+  CSSProperties,
   FormEvent,
   ReactNode,
   useEffect,
@@ -296,6 +297,7 @@ function JourneyPath() {
   );
 }
 
+/* Escena "Convertimos tu potencial..." fuera de servicio por ahora.
 function OpportunityNetwork() {
   return (
     <div className={styles.networkArt} aria-hidden="true">
@@ -318,7 +320,154 @@ function OpportunityNetwork() {
     </div>
   );
 }
+Fin de escena fuera de servicio */
 
+function OpportunityMatching() {
+  const attributes = [
+    {
+      label: "NIVEL DEPORTIVO",
+      value: "Alto · Capitán",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M8 21h8" />
+          <path d="M12 17v4" />
+          <path d="M7 4h10v4a5 5 0 0 1-10 0V4Z" />
+          <path d="M7 6H4c0 2.8 1.3 4.5 3 5" />
+          <path d="M17 6h3c0 2.8-1.3 4.5-3 5" />
+        </svg>
+      ),
+    },
+    {
+      label: "NIVEL ACADÉMICO",
+      value: "GPA 3.7",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+          <path d="M9 7h7" />
+        </svg>
+      ),
+    },
+    {
+      label: "OBJETIVOS",
+      value: "Business · NCAA",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="5" />
+          <circle cx="12" cy="12" r="1.2" />
+        </svg>
+      ),
+    },
+    {
+      label: "POTENCIAL",
+      value: "High potential",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m3 17 6-6 4 4 8-8" />
+          <path d="M15 7h6v6" />
+        </svg>
+      ),
+    },
+  ];
+
+  const universities = [
+    { name: "STATE UNIVERSITY", match: "41%", scale: 0.41, winner: false },
+    { name: "HARBOR INSTITUTE", match: "62%", scale: 0.62, winner: false },
+    { name: "RIVERVIEW COLLEGE", match: "78%", scale: 0.78, winner: false },
+    { name: "COAST COLLEGE", match: "94%", scale: 0.94, winner: true },
+  ];
+
+  return (
+    <div className={styles.matchingArt} aria-hidden="true">
+      <svg className={styles.mLines} viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path data-m-line d="M36 43.5 C 40 43.5, 43.5 42.5, 46.5 42" pathLength={1} />
+        <path data-m-line d="M67 43.5 C 70 36, 72 25, 74 14.5" pathLength={1} />
+        <path data-m-line d="M67 43.5 C 70 40, 72 34.5, 74 29.5" pathLength={1} />
+        <path data-m-line d="M67 43.5 C 70 44, 72 44.2, 74 44.3" pathLength={1} />
+        <path data-m-line d="M67 43.5 C 70 50, 72 55.5, 74 59.5" pathLength={1} />
+      </svg>
+
+      <div className={styles.mColPerfil}>
+        <span className={styles.mLabel} data-m-label-p>TU PERFIL</span>
+        <div className={styles.mCard} data-m-card>
+          <div className={styles.mHead}>
+            <span className={styles.mAvatar}>M</span>
+            <span className={styles.mWho}>
+              <strong>MATEO</strong>
+              <em>Student Athlete · Argentina</em>
+            </span>
+          </div>
+          <ul className={styles.mAttrs}>
+            {attributes.map((attr) => (
+              <li data-m-attr key={attr.label}>
+                <i>{attr.icon}</i>
+                <span>
+                  <strong>{attr.label}</strong>
+                  <em>{attr.value}</em>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className={styles.mColCore}>
+        <div className={styles.mCore} data-m-core>
+          <svg className={styles.mRing} viewBox="0 0 64 64">
+            <circle className={styles.mRingTrack} cx="32" cy="32" r="27" />
+            <circle className={styles.mRingFill} cx="32" cy="32" r="27" pathLength={100} transform="rotate(-90 32 32)" data-m-ring />
+          </svg>
+          <span className={styles.mValue} data-m-value>94%</span>
+        </div>
+        <span className={styles.mCaption} data-m-caption>MATCH</span>
+        <div className={styles.mStatus}>
+          <span data-m-st1>Analizando perfil...</span>
+          <ul data-m-st2>
+            <li data-m-check>Deportivo</li>
+            <li data-m-check>Académico</li>
+            <li data-m-check>Objetivos</li>
+            <li data-m-check>Potencial</li>
+          </ul>
+          <strong data-m-st3>COMPATIBILIDAD ALTA</strong>
+        </div>
+      </div>
+
+      <div className={styles.mColUnis}>
+        <span className={styles.mLabel} data-m-label-o>TU OPORTUNIDAD</span>
+        {universities.map((uni) => (
+          <div
+            className={`${styles.mUni} ${uni.winner ? styles.mWinner : ""}`}
+            data-m-uni
+            key={uni.name}
+          >
+            {uni.winner ? (
+              <span className={styles.mBadge} data-m-badge>OPORTUNIDAD ENCONTRADA</span>
+            ) : null}
+            <span className={styles.mUniHead}>
+              <strong>{uni.name}</strong>
+              <em>{uni.match}</em>
+            </span>
+            <span className={styles.mMeter}>
+              <i data-m-fill style={{ "--w": uni.match } as CSSProperties} />
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.mWhy} data-m-why>
+        <span>¿POR QUÉ ESTA UNIVERSIDAD?</span>
+        <ul>
+          <li data-m-why-item>Nivel deportivo competitivo</li>
+          <li data-m-why-item>Programa académico ideal</li>
+          <li data-m-why-item>Objetivos personales alineados</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/* Tarjeta de oferta original del campus, fuera de servicio por ahora.
 function CampusDocuments() {
   return (
     <div className={styles.campusArt} aria-hidden="true">
@@ -334,6 +483,7 @@ function CampusDocuments() {
     </div>
   );
 }
+Fin de tarjeta fuera de servicio */
 
 function SupportProof() {
   return (
@@ -648,17 +798,38 @@ export default function AthletesUsa() {
       const orbitLabels = Array.from(
         root.querySelectorAll<HTMLElement>("[data-orbit-label]"),
       );
-      const profileBars = Array.from(
-        root.querySelectorAll<HTMLElement>("[data-profile-bar]"),
+      const mLabelP = root.querySelector<HTMLElement>("[data-m-label-p]");
+      const mLabelO = root.querySelector<HTMLElement>("[data-m-label-o]");
+      const mCard = root.querySelector<HTMLElement>("[data-m-card]");
+      const mAttrs = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-m-attr]"),
       );
-      const network = root.querySelector<HTMLElement>("[data-network]")!;
-      const networkNodes = Array.from(
-        root.querySelectorAll<HTMLElement>("[data-network-node]"),
+      const mLines = Array.from(
+        root.querySelectorAll<SVGPathElement>("[data-m-line]"),
       );
-      const offerCard = root.querySelector<HTMLElement>("[data-offer-card]")!;
-      const offerTags = Array.from(
-        root.querySelectorAll<HTMLElement>("[data-offer-tag]"),
+      const mCore = root.querySelector<HTMLElement>("[data-m-core]");
+      const mRing = root.querySelector<SVGCircleElement>("[data-m-ring]");
+      const mValue = root.querySelector<HTMLElement>("[data-m-value]");
+      const mCaption = root.querySelector<HTMLElement>("[data-m-caption]");
+      const mSt1 = root.querySelector<HTMLElement>("[data-m-st1]");
+      const mSt2 = root.querySelector<HTMLElement>("[data-m-st2]");
+      const mChecks = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-m-check]"),
       );
+      const mSt3 = root.querySelector<HTMLElement>("[data-m-st3]");
+      const mUnis = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-m-uni]"),
+      );
+      const mFills = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-m-fill]"),
+      );
+      const mBadge = root.querySelector<HTMLElement>("[data-m-badge]");
+      const matchWhy = root.querySelector<HTMLElement>("[data-m-why]");
+      const whyItems = Array.from(
+        root.querySelectorAll<HTMLElement>("[data-m-why-item]"),
+      );
+      const matchFinal = root.querySelector<HTMLElement>("[data-match-final]");
+      const campusScene = root.querySelector<HTMLElement>('[data-scene="campus"]');
       const proofCards = Array.from(
         root.querySelectorAll<HTMLElement>("[data-proof-card]"),
       );
@@ -673,7 +844,7 @@ export default function AthletesUsa() {
       );
 
       const setActiveScene = (progress: number) => {
-        const activeIndex = [0.084, 0.307, 0.418, 0.529, 0.64, 0.751, 0.862, 0.982]
+        const activeIndex = [0.084, 0.307, 0.589, 0.7, 0.811, 0.922, 0.982]
           .findIndex((limit) => progress < limit);
 
         scenes.forEach((scene, index) => {
@@ -751,11 +922,61 @@ export default function AthletesUsa() {
             borderColor: "rgba(212, 7, 47, 0.5)",
           });
         }
-        utils.set(profileBars, { scaleX: 0.18, transformOrigin: "0% 50%" });
-        utils.set(network, { opacity: 0.3 });
-        utils.set(networkNodes, { opacity: 0, scale: 0.78 });
-        utils.set(offerCard, { rotate: -4, y: "2rem" });
-        utils.set(offerTags, { opacity: 0, y: "0.8rem" });
+        utils.set(mLines, { opacity: 0.9, strokeDasharray: 1, strokeDashoffset: 1 });
+        if (mLabelP) {
+          utils.set(mLabelP, { opacity: 0, y: "0.8rem" });
+        }
+        if (mLabelO) {
+          utils.set(mLabelO, { opacity: 0, y: "0.8rem" });
+        }
+        if (mCard) {
+          utils.set(mCard, { opacity: 0, y: "1.6rem" });
+        }
+        mAttrs.forEach((attr) => {
+          utils.set(attr, { opacity: 0.3, x: "-0.5rem" });
+        });
+        if (mCore) {
+          utils.set(mCore, { opacity: 0, scale: 0.6 });
+        }
+        if (mRing) {
+          utils.set(mRing, { strokeDasharray: 100, strokeDashoffset: 100 });
+        }
+        if (mValue) {
+          utils.set(mValue, { opacity: 0, scale: 0.6 });
+        }
+        if (mCaption) {
+          utils.set(mCaption, { opacity: 0 });
+        }
+        if (mSt1) {
+          utils.set(mSt1, { opacity: 0 });
+        }
+        if (mSt2) {
+          utils.set(mSt2, { opacity: 0 });
+        }
+        utils.set(mChecks, { opacity: 0, scale: 0.5 });
+        if (mSt3) {
+          utils.set(mSt3, { opacity: 0, y: "0.5rem" });
+        }
+        utils.set(mUnis, { opacity: 0, x: "-1rem" });
+        const winner = root.querySelector<HTMLElement>("." + styles.mWinner);
+        if (winner) {
+          utils.set(winner, {
+            borderColor: "rgba(255, 255, 255, 0.34)",
+            boxShadow: "none",
+            scale: 1,
+          });
+        }
+        utils.set(mFills, { scaleX: 0, transformOrigin: "0% 50%" });
+        if (mBadge) {
+          utils.set(mBadge, { opacity: 0, y: "-0.6rem" });
+        }
+        if (matchWhy) {
+          utils.set(matchWhy, { opacity: 0, y: "0.8rem" });
+        }
+        utils.set(whyItems, { opacity: 0, x: "-0.5rem" });
+        if (matchFinal) {
+          utils.set(matchFinal, { opacity: 0, y: "0.8rem" });
+        }
         utils.set(proofCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
         utils.set(proofLogos, { opacity: 0, scale: 0.78, x: "0.8rem" });
         utils.set(caseCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
@@ -860,11 +1081,10 @@ export default function AthletesUsa() {
 
       addTransition(0, 1, 120, 80);
       addTransition(1, 2, 520, 80);
-      addTransition(2, 3, 720, 80);
-      addTransition(3, 4, 920, 80);
-      addTransition(4, 5, 1120, 80);
-      addTransition(5, 6, 1320, 80);
-      addTransition(6, 7, 1520, 80);
+      addTransition(2, 3, 1020, 80);
+      addTransition(3, 4, 1220, 80);
+      addTransition(4, 5, 1420, 80);
+      addTransition(5, 6, 1620, 80);
 
       if (!reduceMotion) {
         if (orbit) {
@@ -976,45 +1196,220 @@ export default function AthletesUsa() {
         activateStage(2, 368);
         activateStage(3, 424);
         activateStage(4, 480);
-        timeline
-          .add(profileBars, {
-            delay: stagger(12),
-            duration: 70,
+
+        if (mLabelP) {
+          timeline.add(mLabelP, {
+            duration: 40,
             ease: "inOut(3)",
-            scaleX: 1,
-          }, 605)
-          .add(network, {
-            duration: 96,
-            ease: "linear",
             opacity: 1,
-          }, 610)
-          .add(networkNodes, {
-            delay: stagger(14),
-            duration: 46,
-            ease: "inOut(3)",
+            y: "0rem",
+          }, 600);
+        }
+        if (mCard) {
+          timeline.add(mCard, {
+            duration: 70,
+            ease: "out(3)",
+            opacity: 1,
+            y: "0rem",
+          }, 618);
+        }
+        mAttrs.forEach((attr, index) => {
+          timeline.add(attr, {
+            duration: 45,
+            ease: "out(3)",
+            opacity: 1,
+            x: "0rem",
+          }, 655 + index * 13);
+        });
+
+        if (mLines[0]) {
+          timeline.add(mLines[0], {
+            duration: 45,
+            ease: "inOut(2)",
+            strokeDashoffset: 0,
+          }, 706);
+        }
+        if (mCore) {
+          timeline.add(mCore, {
+            duration: 55,
+            ease: "outBack(1.4)",
             opacity: 1,
             scale: 1,
-          }, 610)
-          .add(offerCard, {
-            duration: 104,
+          }, 716);
+        }
+        if (mSt1) {
+          timeline
+            .add(mSt1, { duration: 25, ease: "inOut(3)", opacity: 1 }, 724)
+            .add(mSt1, { duration: 20, ease: "inOut(3)", opacity: 0 }, 748);
+        }
+        if (mRing) {
+          timeline.add(mRing, {
+            duration: 62,
+            ease: "linear",
+            strokeDashoffset: 0,
+          }, 730);
+        }
+        if (mValue) {
+          timeline.add(mValue, {
+            duration: 40,
+            ease: "outBack(2)",
+            opacity: 1,
+            scale: 1,
+          }, 772);
+        }
+        if (mCaption) {
+          timeline.add(mCaption, {
+            duration: 30,
             ease: "inOut(3)",
-            rotate: 0,
+            opacity: 1,
+          }, 780);
+        }
+        if (mSt2) {
+          timeline.add(mSt2, { duration: 20, ease: "inOut(3)", opacity: 1 }, 752);
+        }
+        mChecks.forEach((check, index) => {
+          timeline.add(check, {
+            duration: 30,
+            ease: "outBack(2)",
+            opacity: 1,
+            scale: 1,
+          }, 756 + index * 9);
+        });
+        if (mSt2) {
+          timeline.add(mSt2, { duration: 20, ease: "inOut(3)", opacity: 0 }, 800);
+        }
+        if (mSt3) {
+          timeline.add(mSt3, {
+            duration: 35,
+            ease: "out(3)",
+            opacity: 1,
             y: "0rem",
-          }, 804)
-          .add(offerTags, {
-            delay: stagger(18),
-            duration: 50,
+          }, 806);
+        }
+
+        mLines.slice(1).forEach((path, index) => {
+          timeline.add(path, {
+            duration: 42,
+            ease: "inOut(2)",
+            strokeDashoffset: 0,
+          }, 816 + index * 9);
+        });
+        const uniScales = [0.41, 0.62, 0.78, 0.94];
+        mUnis.forEach((uni, index) => {
+          timeline.add(uni, {
+            duration: 45,
+            ease: "out(3)",
+            opacity: 1,
+            x: "0rem",
+          }, 820 + index * 9);
+          if (mFills[index]) {
+            timeline.add(mFills[index], {
+              duration: 50,
+              ease: "out(3)",
+              scaleX: uniScales[index],
+            }, 826 + index * 9);
+          }
+        });
+        if (mLabelO) {
+          timeline.add(mLabelO, {
+            duration: 40,
             ease: "inOut(3)",
             opacity: 1,
             y: "0rem",
-          }, 814)
-          .add(mediaImages[3]!, {
+          }, 812);
+        }
+
+        if (mUnis[0]) {
+          timeline.add(mUnis[0], {
+            duration: 40,
+            ease: "inOut(3)",
+            opacity: 0.15,
+          }, 884);
+        }
+        if (mUnis[1]) {
+          timeline.add(mUnis[1], {
+            duration: 40,
+            ease: "inOut(3)",
+            opacity: 0.15,
+          }, 896);
+        }
+        if (mUnis[2]) {
+          timeline.add(mUnis[2], {
+            duration: 40,
+            ease: "inOut(3)",
+            opacity: 0.45,
+          }, 908);
+        }
+        const winner = root.querySelector<HTMLElement>("." + styles.mWinner);
+        if (winner) {
+          timeline.add(winner, {
+            duration: 50,
+            ease: "out(3)",
+            borderColor: "rgba(212, 7, 47, 0.9)",
+            boxShadow: "0 0 2.2rem rgba(212, 7, 47, 0.35)",
+            scale: 1.05,
+          }, 916);
+        }
+        if (mBadge) {
+          timeline.add(mBadge, {
+            duration: 40,
+            ease: "outBack(1.6)",
+            opacity: 1,
+            y: "0rem",
+          }, 926);
+        }
+        if (matchWhy) {
+          timeline.add(matchWhy, {
+            duration: 45,
+            ease: "out(3)",
+            opacity: 1,
+            y: "0rem",
+          }, 934);
+        }
+        whyItems.forEach((item, index) => {
+          timeline.add(item, {
+            duration: 35,
+            ease: "outBack(1.8)",
+            opacity: 1,
+            x: "0rem",
+          }, 942 + index * 8);
+        });
+        if (matchFinal) {
+          timeline.add(matchFinal, {
+            duration: 44,
+            ease: "inOut(3)",
+            opacity: 1,
+            y: "0rem",
+          }, 958);
+        }
+
+        const verticalLayout = window.matchMedia("(max-width: 1099px)");
+        if (campusScene && verticalLayout.matches) {
+          const exitParts = Array.from(
+            campusScene.querySelectorAll<HTMLElement>(
+              "[data-heading], [data-copy-block], ." + styles.arrowLink,
+            ),
+          );
+          exitParts.forEach((part, index) => {
+            timeline.add(part, {
+              duration: 55,
+              ease: "inOut(3)",
+              opacity: 0,
+              y: "3.5rem",
+            }, 604 + index * 9);
+          });
+        }
+
+        if (mediaImages[2]) {
+          timeline.add(mediaImages[2], {
             duration: 108,
             ease: "linear",
             scale: 1.03,
             x: "0vw",
             y: "-2vh",
-          }, 804)
+          }, 900);
+        }
+        timeline
           .add(proofCards, {
             delay: stagger(24),
             duration: 72,
@@ -1022,7 +1417,7 @@ export default function AthletesUsa() {
             opacity: 1,
             scale: 1,
             y: "0rem",
-          }, 1004)
+          }, 1120)
           .add(proofLogos, {
             delay: stagger(24),
             duration: 42,
@@ -1030,7 +1425,7 @@ export default function AthletesUsa() {
             opacity: 1,
             scale: 1,
             x: "0rem",
-          }, 1040)
+          }, 1160)
           .add(caseCards, {
             delay: stagger(24),
             duration: 72,
@@ -1038,7 +1433,7 @@ export default function AthletesUsa() {
             opacity: 1,
             scale: 1,
             y: "0rem",
-          }, 1404)
+          }, 1480)
           .add(teamCards, {
             delay: stagger(24),
             duration: 72,
@@ -1046,14 +1441,14 @@ export default function AthletesUsa() {
             opacity: 1,
             scale: 1,
             y: "0rem",
-          }, 1604);
+          }, 1680);
       }
 
       if (handoff) {
-        const lastDirection = sceneDirections[7];
+        const lastDirection = sceneDirections[6];
 
         timeline
-          .add(scenes[7], { duration: 60, ease: "linear", opacity: 0 }, 1740)
+          .add(scenes[6], { duration: 60, ease: "linear", opacity: 0 }, 1740)
           .add(handoff, {
             duration: 60,
             ease: "inOut(3)",
@@ -1063,19 +1458,19 @@ export default function AthletesUsa() {
 
         if (!reduceMotion) {
           timeline
-            .add(headingLines[7], {
+            .add(headingLines[6], {
               duration: 60,
               ease: "inOut(3)",
               opacity: 0,
               x: `${lastDirection * 105}vw`,
             }, 1740)
-            .add(copyBlocks[7], {
+            .add(copyBlocks[6], {
               duration: 60,
               ease: "inOut(3)",
               opacity: 0,
               x: `${lastDirection * 105}vw`,
             }, 1740)
-            .add(artLayers[7]!, {
+            .add(artLayers[6]!, {
               duration: 60,
               ease: "inOut(3)",
               opacity: 0,
@@ -1134,6 +1529,7 @@ export default function AthletesUsa() {
               <ArrowLink to="path">Conocé el proceso</ArrowLink>
             </Scene>
 
+            {/* Escena "Convertimos tu potencial..." fuera de servicio por ahora.
             <Scene
               id="opportunity"
               side="left"
@@ -1146,6 +1542,7 @@ export default function AthletesUsa() {
               <p className={styles.lede} data-copy-block>Tu historia deportiva y académica, lista para llegar a las universidades correctas.</p>
               <ArrowLink to="opportunity">Ver cómo lo hacemos</ArrowLink>
             </Scene>
+            Fin de escena fuera de servicio */}
 
             <Scene
               id="campus"
@@ -1153,12 +1550,13 @@ export default function AthletesUsa() {
               theme="dark"
               image={campusImage}
               imageAlt="Campus universitario y estadio deportivo en Estados Unidos"
-              art={<CampusDocuments />}
+              art={<OpportunityMatching />}
             >
               <p className={styles.eyebrow} data-copy-block>DE TALENTO A CAMPUS</p>
               <h2 data-heading>Conectamos tu talento con la oportunidad correcta.</h2>
-              <p className={styles.lede} data-copy-block>Beca, admisión y visa coordinadas hasta tu primer día en la universidad.</p>
+              <p className={styles.lede} data-copy-block>No buscamos cualquier universidad. Buscamos la que tenga sentido para tu nivel, tus objetivos y tu futuro.</p>
               <ArrowLink to="campus">Conocé el camino</ArrowLink>
+              <p className={styles.finalNote} data-match-final>Tu talento abre puertas. Nosotros encontramos cuáles son las correctas.</p>
             </Scene>
 
             <Scene id="support" side="left" theme="light" art={<SupportProof />}>

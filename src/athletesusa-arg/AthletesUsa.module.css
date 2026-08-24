@@ -508,6 +508,7 @@
   stroke: var(--ausa-red);
 }
 
+/* Estilos de la escena fuera de servicio ("Convertimos tu potencial...").
 .networkArt {
   position: absolute;
   top: 11%;
@@ -667,6 +668,364 @@
   border: 1px solid rgb(6 27 79 / 20%);
   font-size: 0.48rem;
   font-style: normal;
+  font-weight: 800;
+}
+Fin de estilos fuera de servicio. */
+
+/* ── Matching (escena "Conectamos tu talento") ──
+   El CSS pinta el ESTADO FINAL; JS (si hay motion) resetea y anima. */
+
+.matchingArt {
+  position: absolute;
+  top: 11%;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding-inline: 1rem;
+}
+
+.mLines {
+  display: none;
+}
+
+.mLabel {
+  color: rgb(248 249 252 / 55%);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.mColPerfil,
+.mColCore,
+.mColUnis {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mColPerfil {
+  width: min(100%, 19rem);
+  align-items: stretch;
+}
+
+.mColPerfil .mLabel {
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.finalNote {
+  display: block;
+  margin: 0.9rem 0 0;
+  opacity: 0;
+  color: rgb(248 249 252 / 78%);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.mCard {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.78rem 0.82rem;
+  border: 1px solid rgb(255 255 255 / 34%);
+  border-radius: 0.9rem;
+  background: rgb(4 16 48 / 82%);
+  backdrop-filter: blur(10px);
+}
+
+.mHead {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgb(255 255 255 / 14%);
+}
+
+.mAvatar {
+  display: grid;
+  flex: none;
+  width: 1.9rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: white;
+  background: var(--ausa-red);
+  font-size: 0.75rem;
+  font-weight: 900;
+  place-items: center;
+}
+
+.mWho {
+  display: grid;
+}
+
+.mWho strong {
+  color: white;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+}
+
+.mWho em {
+  color: rgb(248 249 252 / 60%);
+  font-size: 0.52rem;
+  font-style: normal;
+}
+
+.mAttrs {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 0.35rem 0.45rem;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
+}
+
+.mAttrs li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.4rem;
+  border-radius: 0.55rem;
+  background: rgb(255 255 255 / 6%);
+}
+
+.mAttrs i {
+  display: grid;
+  flex: none;
+  width: 1.15rem;
+  aspect-ratio: 1;
+  border-radius: 0.4rem;
+  background: rgb(212 7 47 / 20%);
+  color: #ff5d76;
+  place-items: center;
+}
+
+.mAttrs i svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.mAttrs strong {
+  display: block;
+  color: rgb(248 249 252 / 92%);
+  font-size: 0.42rem;
+  letter-spacing: 0.05em;
+}
+
+.mAttrs em {
+  display: block;
+  color: rgb(248 249 252 / 58%);
+  font-size: 0.52rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.mCore {
+  position: relative;
+  display: grid;
+  width: 4.9rem;
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.mRing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mRingTrack {
+  fill: none;
+  stroke: rgb(255 255 255 / 16%);
+  stroke-width: 4;
+}
+
+.mRingFill {
+  fill: none;
+  stroke: var(--ausa-red);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+}
+
+.mValue {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.mCaption {
+  margin-top: 0.25rem;
+  color: rgb(248 249 252 / 60%);
+  font-size: 0.46rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.mStatus {
+  display: grid;
+  min-height: 2.6rem;
+  margin-top: 0.35rem;
+  place-items: center;
+}
+
+.mStatus > * {
+  grid-area: 1 / 1;
+  text-align: center;
+}
+
+.mStatus [data-m-st1] {
+  color: rgb(248 249 252 / 65%);
+  font-size: 0.56rem;
+  font-weight: 600;
+}
+
+.mStatus ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 0.12rem 0.7rem;
+  grid-template-columns: repeat(2, auto);
+  list-style: none;
+}
+
+.mStatus li {
+  color: rgb(248 249 252 / 82%);
+  font-size: 0.5rem;
+  font-weight: 700;
+}
+
+.mStatus li::before {
+  content: "✓ ";
+  color: #ff5d76;
+}
+
+.mStatus [data-m-st3] {
+  color: #ff5d76;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.mColUnis {
+  display: grid;
+  width: min(100%, 20rem);
+  gap: 0.45rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.mColUnis .mLabel {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.mUni {
+  position: relative;
+  display: grid;
+  gap: 0.26rem;
+  padding: 0.42rem 0.5rem;
+  border: 1px solid rgb(255 255 255 / 34%);
+  border-radius: 0.7rem;
+  background: rgb(4 16 48 / 82%);
+  backdrop-filter: blur(10px);
+}
+
+.mUniHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.mUniHead strong {
+  overflow: hidden;
+  color: rgb(248 249 252 / 94%);
+  font-size: 0.46rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.mUniHead em {
+  color: #ff5d76;
+  font-size: 0.54rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.mMeter {
+  display: block;
+  height: 0.24rem;
+  overflow: hidden;
+  border-radius: 50rem;
+  background: rgb(255 255 255 / 16%);
+}
+
+.mMeter i {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff5d76, var(--ausa-red));
+  transform-origin: 0% 50%;
+}
+
+.mWinner {
+  border-color: var(--ausa-red);
+  box-shadow: 0 0 1.8rem rgb(212 7 47 / 35%);
+}
+
+.mBadge {
+  position: absolute;
+  top: -0.55rem;
+  right: 0.45rem;
+  padding: 0.18rem 0.45rem;
+  border-radius: 50rem;
+  background: var(--ausa-red);
+  color: white;
+  font-size: 0.38rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.mWhy {
+  display: grid;
+  width: min(100%, 20rem);
+  gap: 0.3rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgb(212 7 47 / 55%);
+  border-radius: 0.8rem;
+  background: rgb(5 22 65 / 82%);
+  backdrop-filter: blur(10px);
+}
+
+.mWhy > span {
+  color: white;
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.mWhy ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 0.16rem;
+  list-style: none;
+}
+
+.mWhy li {
+  color: rgb(248 249 252 / 78%);
+  font-size: 0.52rem;
+  font-weight: 600;
+}
+
+.mWhy li::before {
+  content: "✓ ";
+  color: #ff5d76;
   font-weight: 800;
 }
 
@@ -1378,6 +1737,7 @@
     stroke-width: 3;
   }
 
+  /* Estilos fuera de servicio.
   .networkArt {
     top: 18%;
     right: 4%;
@@ -1404,6 +1764,79 @@
   .offerCard {
     width: 18rem;
     padding: 1.35rem;
+  }
+  fin de estilos fuera de servicio. */
+
+  .matchingArt {
+    top: 9%;
+    right: auto;
+    left: 3.5%;
+    bottom: auto;
+    width: clamp(20rem, 44%, 26rem);
+    gap: 1rem;
+    padding-inline: 0;
+  }
+
+  .mLabel {
+    font-size: 0.54rem;
+  }
+
+  .mStatus {
+    display: grid;
+  }
+
+  .mCard {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .mAvatar {
+    width: 2.2rem;
+    font-size: 0.85rem;
+  }
+
+  .mAttrs strong {
+    font-size: 0.46rem;
+  }
+
+  .mAttrs em {
+    font-size: 0.56rem;
+  }
+
+  .mCore {
+    width: 5.6rem;
+  }
+
+  .mValue {
+    font-size: 1.15rem;
+  }
+
+  .mUni {
+    padding: 0.5rem 0.55rem;
+  }
+
+  .mUniHead strong {
+    font-size: 0.52rem;
+  }
+
+  .mUniHead em {
+    font-size: 0.6rem;
+  }
+
+  .mBadge {
+    font-size: 0.42rem;
+  }
+
+  .mWhy > span {
+    font-size: 0.56rem;
+  }
+
+  .mWhy li {
+    font-size: 0.58rem;
+  }
+
+  .finalNote {
+    display: block;
+    max-width: 30rem;
   }
 
   .proofStrip {
@@ -1543,6 +1976,201 @@
   }
 }
 
+@media (min-width: 1100px) {
+  .matchingArt {
+    top: calc(50% - 10.75rem);
+    left: 3.5%;
+    display: block;
+    width: clamp(30rem, 44%, 38rem);
+    height: 21.5rem;
+    gap: 0;
+    padding-inline: 0;
+  }
+
+  .mLines {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .mLines path {
+    fill: none;
+    stroke: rgb(212 7 47 / 60%);
+    stroke-width: 1.75;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .mLabel {
+    font-size: 0.58rem;
+  }
+
+  .mColPerfil {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36%;
+  }
+
+  .mColPerfil .mLabel {
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  .mCard {
+    width: 100%;
+    padding: 1.05rem 1.1rem;
+    gap: 0.6rem;
+  }
+
+  .mHead {
+    gap: 0.7rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .mAvatar {
+    width: 2.5rem;
+    font-size: 0.95rem;
+  }
+
+  .mWho strong {
+    font-size: 0.84rem;
+  }
+
+  .mWho em {
+    font-size: 0.6rem;
+  }
+
+  .mAttrs {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .mAttrs li {
+    gap: 0.55rem;
+    padding: 0.48rem 0.55rem;
+  }
+
+  .mAttrs i {
+    width: 1.35rem;
+    border-radius: 0.5rem;
+  }
+
+  .mAttrs i svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .mAttrs strong {
+    font-size: 0.56rem;
+  }
+
+  .mAttrs em {
+    font-size: 0.66rem;
+  }
+
+  .mColCore {
+    position: absolute;
+    top: 5.9rem;
+    left: 41%;
+    width: 32%;
+  }
+
+  .mCore {
+    width: 6.8rem;
+    margin-inline: auto;
+  }
+
+  .mValue {
+    font-size: 1.6rem;
+  }
+
+  .mCaption {
+    margin-top: 0.35rem;
+    font-size: 0.52rem;
+  }
+
+  .mStatus {
+    min-height: 3.4rem;
+    margin-top: 1.3rem;
+  }
+
+  .mStatus [data-m-st1] {
+    font-size: 0.64rem;
+  }
+
+  .mStatus li {
+    font-size: 0.58rem;
+  }
+
+  .mStatus [data-m-st3] {
+    font-size: 0.72rem;
+  }
+
+  .mColUnis {
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    left: auto;
+    display: flex;
+    width: 26%;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .mColUnis .mLabel {
+    grid-column: auto;
+    margin-bottom: 0.4rem;
+    text-align: left;
+  }
+
+  .mUni {
+    gap: 0.3rem;
+    padding: 0.6rem 0.65rem;
+  }
+
+  .mUniHead strong {
+    overflow: visible;
+    white-space: normal;
+    font-size: 0.6rem;
+  }
+
+  .mUniHead em {
+    font-size: 0.7rem;
+  }
+
+  .mMeter {
+    height: 0.28rem;
+  }
+
+  .mBadge {
+    top: -0.6rem;
+    padding: 0.22rem 0.55rem;
+    font-size: 0.46rem;
+  }
+
+  .mWhy {
+    position: absolute;
+    top: 15.8rem;
+    right: 0;
+    left: auto;
+    width: 26%;
+    gap: 0.4rem;
+    padding: 0.85rem 0.9rem;
+  }
+
+  .mWhy > span {
+    font-size: 0.62rem;
+  }
+
+  .mWhy li {
+    font-size: 0.64rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .media img,
   .sectionContent,
@@ -1555,6 +2183,12 @@
   }
 
   .journeyCard {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .finalNote {
+    display: block !important;
     opacity: 1 !important;
     transform: none !important;
   }
