@@ -574,7 +574,7 @@ const sjMedal = (
 function SupportJourney() {
   return (
     <div className={styles.sjWrap} aria-hidden="true">
-      <div className={styles.sjRail}>
+      <div className={styles.sjRail} data-sj-rail>
         <svg className={styles.sjRailSvg} viewBox="0 0 4 100" preserveAspectRatio="none">
           <path className={styles.sjRailBase} d="M2 0v100" />
           <path className={styles.sjRailLine} data-sj-rail-line d="M2 0v100" pathLength={1} />
@@ -688,6 +688,120 @@ function SupportJourney() {
             <em data-sj-final-node>Después</em>
           </div>
         </aside>
+      </div>
+    </div>
+  );
+}
+
+function AboutOrigin() {
+  const ball = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="24" cy="24" r="20" />
+      <path d="M24 4l-5.5 7.5h11L24 4z" />
+      <path d="M6.2 17l7.8 2.5-3.3 6.5L6.2 17z" />
+      <path d="M41.8 17l-7.8 2.5 3.3 6.5 4.5-9z" />
+      <path d="M18.5 41l3.3-8.5h8.4l3.3 8.5" />
+      <path d="M8.5 35l7-3.5 3 5-10-1.5z" />
+      <path d="M39.5 35l-7-3.5-3 5 10-1.5z" />
+    </svg>
+  );
+  const racket = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="20" cy="17" rx="13" ry="15" />
+      <path d="M30 30l8 8M34 38l-4 2 2-4" />
+      <line x1="9" y1="7" x2="9" y2="27" />
+      <line x1="20" y1="2" x2="20" y2="32" />
+      <line x1="14.5" y1="4" x2="14.5" y2="29.5" />
+      <circle cx="38" cy="12" r="4" />
+    </svg>
+  );
+  const oval = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="24" cy="24" rx="18" ry="12" />
+      <path d="M16 14c4 2 8 2 16 0" />
+      <path d="M10 24c0 6 6 10 14 10s14-4 14-10" />
+    </svg>
+  );
+  const stick = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 42L34 10" />
+      <path d="M30 14c5-1.5 9.5 1 11.5 5.5S42 25 38 28" />
+      <circle cx="14" cy="36" r="3.5" />
+    </svg>
+  );
+  const volley = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="24" cy="24" r="20" />
+      <path d="M12 12c8 4 16 4 24 0" />
+      <path d="M4 28c8 4 16 4 24 0" />
+      <path d="M18 44c0-12 0-20 6-28" />
+      <path d="M30 44c0-12 0-20-6-28" />
+    </svg>
+  );
+  const flag = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 8v32" />
+      <path d="M12 8h20l-5 7 5 7H12" />
+    </svg>
+  );
+  const basketball = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="24" cy="24" r="20" />
+      <path d="M24 4v40" />
+      <path d="M4 24h40" />
+      <path d="M7 10c7 4 12 6 17 6s10-2 17-6" />
+      <path d="M7 38c7-4 12-6 17-6s10 2 17 6" />
+    </svg>
+  );
+  const swim = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="14" cy="12" r="4" />
+      <path d="M8 24l8-6 8 4 8-6 8 4" />
+      <path d="M4 34c4-3 8-4 12-1s8 2 12-1 8-3 12 0" />
+    </svg>
+  );
+  const run = (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="30" cy="6" r="4" />
+      <path d="M20 18l12-2" />
+      <path d="M16 44l6-16 8 4V18l-10-8-8 10" />
+      <path d="M10 44l10-16" />
+      <path d="M32 16l4 8" />
+    </svg>
+  );
+
+  const sports = [
+    { icon: ball, label: "FÚTBOL" },
+    { icon: racket, label: "TENIS" },
+    { icon: oval, label: "RUGBY" },
+    { icon: basketball, label: "BASKETBALL" },
+    { icon: stick, label: "HOCKEY" },
+    { icon: volley, label: "VOLLEYBALL" },
+    { icon: flag, label: "GOLF" },
+    { icon: swim, label: "NATACIÓN" },
+    { icon: run, label: "ATLETISMO" },
+  ];
+
+  return (
+    <div className={styles.aoWrap} aria-hidden="true">
+      {/* Cycling: one sport at a time in the center */}
+      <div className={styles.aoCycling} data-ao-cycling>
+        {sports.map((s) => (
+          <div className={styles.aoCycleItem} data-ao-cycle key={s.label}>
+            <span className={styles.aoCycleIcon}>{s.icon}</span>
+            <span className={styles.aoCycleName}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Final slider: all sports visible */}
+      <div className={styles.aoSlider} data-ao-slider>
+        {sports.map((s) => (
+          <div className={styles.aoSlide} data-ao-slide key={s.label}>
+            <span className={styles.aoSlideIcon}>{s.icon}</span>
+            <span className={styles.aoSlideName}>{s.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -1014,10 +1128,11 @@ export default function AthletesUsa() {
       const metricEls = Array.from(
         root.querySelectorAll<HTMLElement>("[data-metric]"),
       );
-      const metricStates = metricEls.map((el) => ({
-        v: el.dataset.format === "plain" ? 1900 : 0,
+      const metricStates = metricEls.map(() => ({
+        v: 0,
       }));
       const sjRailLine = root.querySelector<SVGPathElement>("[data-sj-rail-line]");
+      const sjRail = root.querySelector<HTMLElement>("[data-sj-rail]");
       const sjNodes = Array.from(
         root.querySelectorAll<HTMLElement>("[data-sj-node]"),
       );
@@ -1055,8 +1170,12 @@ export default function AthletesUsa() {
         root.querySelectorAll<HTMLElement>("[data-team-card]"),
       );
 
+      const aoCycles = Array.from(root.querySelectorAll<HTMLElement>("[data-ao-cycle]"));
+      const aoSlides = Array.from(root.querySelectorAll<HTMLElement>("[data-ao-slide]"));
+      const aoSlider = root.querySelector<HTMLElement>("[data-ao-slider]");
+
       const setActiveScene = (progress: number) => {
-        const activeIndex = [0.073, 0.257, 0.486, 0.752, 0.844, 0.936, 0.986]
+        const activeIndex = [0.054, 0.232, 0.455, 0.714, 0.839, 0.929, 0.982]
           .findIndex((limit) => progress < limit);
 
         scenes.forEach((scene, index) => {
@@ -1190,10 +1309,13 @@ export default function AthletesUsa() {
           utils.set(matchFinal, { opacity: 0, y: "0.8rem" });
         }
         metricEls.forEach((el) => {
-          el.textContent = el.dataset.format === "plain" ? "1900" : "0";
+          el.textContent = "0";
         });
         if (sjRailLine) {
           utils.set(sjRailLine, { strokeDasharray: 1, strokeDashoffset: 1 });
+        }
+        if (sjRail) {
+          utils.set(sjRail, { opacity: 0, x: "-1.5rem" });
         }
         utils.set(sjNodes, {
           backgroundColor: "#ffffff",
@@ -1229,6 +1351,12 @@ export default function AthletesUsa() {
         utils.set(sjFinalNodes, { opacity: 0.28 });
         utils.set(caseCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
         utils.set(teamCards, { opacity: 0.42, scale: 0.96, y: "2rem" });
+
+        utils.set(aoCycles, { opacity: 0, scale: 0.85 });
+        utils.set(aoSlides, { opacity: 0, scale: 0.8, y: "0.8rem" });
+        if (aoSlider) {
+          utils.set(aoSlider, { opacity: 0 });
+        }
       }
 
       setActiveScene(0);
@@ -1331,8 +1459,8 @@ export default function AthletesUsa() {
       addTransition(1, 2, 520, 80);
       addTransition(2, 3, 1020, 80);
       addTransition(3, 4, 1600, 80);
-      addTransition(4, 5, 1800, 80);
-      addTransition(5, 6, 2000, 80);
+      addTransition(4, 5, 1880, 80);
+      addTransition(5, 6, 2080, 80);
 
       if (!reduceMotion) {
         if (orbit) {
@@ -1634,7 +1762,7 @@ export default function AthletesUsa() {
         metricEls.forEach((el, index) => {
           const state = metricStates[index];
           timeline.add(state, {
-            duration: 90,
+            duration: 120,
             ease: "out(3)",
             v: Number(el.dataset.target ?? 0),
             onUpdate: () => {
@@ -1642,169 +1770,251 @@ export default function AthletesUsa() {
                 ? String(Math.round(state.v))
                 : Math.round(state.v).toLocaleString("es-AR");
             },
-          }, 1060);
+          }, 1140);
         });
 
-        if (sjRailLine) {
-          timeline.add(sjRailLine, {
-            duration: 408,
-            ease: "linear",
-            strokeDashoffset: 0,
-          }, 1112);
-        }
-        const lightSjNode = (index: number, start: number) => {
-          if (sjNodes[index]) {
-            timeline.add(sjNodes[index], {
+        const verticalLayout = window.matchMedia("(max-width: 1099px)").matches;
+
+        if (verticalLayout) {
+          utils.set(sjStages, { opacity: 0, scale: 1 });
+
+          // 1. Barra vertical aparece (después de que el contenido se va en 1108)
+          if (sjRail) {
+            timeline.add(sjRail, {
               duration: 30,
               ease: "out(3)",
-              backgroundColor: "#d4072f",
-              borderColor: "#d4072f",
-              color: "#f8f9fc",
-            }, start);
+              opacity: 1,
+              x: "0rem",
+            }, 1110);
           }
-        };
-        lightSjNode(0, 1125);
-        lightSjNode(1, 1320);
-        lightSjNode(2, 1445);
 
-        timeline.add(sjChecks, {
-          delay: stagger(22),
-          duration: 26,
-          ease: "outBack(1.7)",
-          opacity: 1,
-          x: "0rem",
-        }, 1160);
-        timeline.add(sjDots, {
-          delay: stagger(16),
-          duration: 22,
-          ease: "outBack(2)",
-          opacity: 1,
-          scale: 1,
-        }, 1190);
-        timeline.add(sjUnis, {
-          duration: 30,
-          ease: "out(3)",
-          opacity: 1,
-        }, 1225);
+          // 2. Línea SVG se dibuja de arriba a abajo
+          if (sjRailLine) {
+            timeline.add(sjRailLine, {
+              duration: 380,
+              ease: "linear",
+              strokeDashoffset: 0,
+            }, 1120);
+          }
 
-        if (sjStages[0]) {
-          timeline.add(sjStages[0], {
-            duration: 28,
-            ease: "inOut(3)",
-            opacity: 0.42,
-            scale: 0.97,
-          }, 1248);
-        }
-        if (sjMilestone) {
-          timeline.add(sjMilestone, {
-            duration: 34,
-            ease: "outBack(1.6)",
+          // 3. Helper para encender un nodo
+          const lightSjNode = (index: number, start: number) => {
+            if (sjNodes[index]) {
+              timeline.add(sjNodes[index], {
+                duration: 30,
+                ease: "out(3)",
+                backgroundColor: "#d4072f",
+                borderColor: "#d4072f",
+                color: "#f8f9fc",
+              }, start);
+            }
+          };
+
+          // Card "Antes" + nodo 0
+          lightSjNode(0, 1140);
+          if (sjStages[0]) {
+            timeline.add(sjStages[0], {
+              duration: 25,
+              ease: "out(3)",
+              opacity: 1,
+              scale: 1,
+          }, 1040);
+            timeline.add(sjStages[0], {
+              duration: 20,
+              ease: "inOut(2)",
+              opacity: 0,
+              scale: 0.95,
+            }, 1290);
+          }
+
+          // Card "Durante" + nodo 1
+          lightSjNode(1, 1310);
+          if (sjStages[1]) {
+            timeline.add(sjStages[1], {
+              duration: 25,
+              ease: "out(3)",
+              opacity: 1,
+              scale: 1,
+            }, 1310);
+            timeline.add(sjStages[1], {
+              duration: 20,
+              ease: "inOut(2)",
+              opacity: 0,
+              scale: 0.95,
+            }, 1460);
+          }
+
+          // Card "Después" + nodo 2
+          lightSjNode(2, 1480);
+          if (sjStages[2]) {
+            timeline.add(sjStages[2], {
+              duration: 25,
+              ease: "out(3)",
+              opacity: 1,
+              scale: 1,
+            }, 1480);
+          }
+        } else {
+          if (sjRailLine) {
+            timeline.add(sjRailLine, {
+              duration: 408,
+              ease: "linear",
+              strokeDashoffset: 0,
+            }, 1112);
+          }
+          const lightSjNode = (index: number, start: number) => {
+            if (sjNodes[index]) {
+              timeline.add(sjNodes[index], {
+                duration: 30,
+                ease: "out(3)",
+                backgroundColor: "#d4072f",
+                borderColor: "#d4072f",
+                color: "#f8f9fc",
+              }, start);
+            }
+          };
+          lightSjNode(0, 1125);
+          lightSjNode(1, 1320);
+          lightSjNode(2, 1445);
+
+          timeline.add(sjChecks, {
+            delay: stagger(22),
+            duration: 26,
+            ease: "outBack(1.7)",
+            opacity: 1,
+            x: "0rem",
+          }, 1160);
+          timeline.add(sjDots, {
+            delay: stagger(16),
+            duration: 22,
+            ease: "outBack(2)",
             opacity: 1,
             scale: 1,
-            y: "0rem",
-          }, 1256);
-        }
+          }, 1190);
+          timeline.add(sjUnis, {
+            duration: 30,
+            ease: "out(3)",
+            opacity: 1,
+          }, 1225);
 
-        if (sjStages[1]) {
-          timeline
-            .add(sjStages[1], {
+          if (sjStages[0]) {
+            timeline.add(sjStages[0], {
+              duration: 28,
+              ease: "inOut(3)",
+              opacity: 0.42,
+              scale: 0.97,
+            }, 1248);
+          }
+          if (sjMilestone) {
+            timeline.add(sjMilestone, {
+              duration: 34,
+              ease: "outBack(1.6)",
+              opacity: 1,
+              scale: 1,
+              y: "0rem",
+            }, 1256);
+          }
+
+          if (sjStages[1]) {
+            timeline
+              .add(sjStages[1], {
+                duration: 32,
+                ease: "inOut(3)",
+                opacity: 1,
+                scale: 1,
+              }, 1318)
+              .add(sjStages[1], {
+                duration: 26,
+                ease: "inOut(3)",
+                opacity: 0.42,
+                scale: 0.97,
+              }, 1436);
+          }
+          if (sjCore) {
+            timeline.add(sjCore, {
+              duration: 34,
+              ease: "outBack(1.5)",
+              opacity: 1,
+              scale: 1,
+            }, 1330);
+          }
+          if (sjRing) {
+            timeline.add(sjRing, {
+              duration: 52,
+              ease: "linear",
+              strokeDashoffset: 0,
+            }, 1338);
+          }
+          timeline.add(sjSats, {
+            delay: stagger(12),
+            duration: 28,
+            ease: "outBack(1.7)",
+            opacity: 1,
+            scale: 1,
+          }, 1352);
+          if (sjGrad) {
+            timeline.add(sjGrad, {
+              duration: 30,
+              ease: "out(3)",
+              opacity: 1,
+              y: "-0.2rem",
+            }, 1400);
+          }
+
+          if (sjStages[2]) {
+            timeline.add(sjStages[2], {
               duration: 32,
               ease: "inOut(3)",
               opacity: 1,
               scale: 1,
-            }, 1318)
-            .add(sjStages[1], {
+            }, 1442);
+          }
+          if (sjNetCore) {
+            timeline.add(sjNetCore, {
               duration: 26,
-              ease: "inOut(3)",
-              opacity: 0.42,
-              scale: 0.97,
-            }, 1436);
-        }
-        if (sjCore) {
-          timeline.add(sjCore, {
-            duration: 34,
-            ease: "outBack(1.5)",
+              ease: "outBack(1.6)",
+              opacity: 1,
+              scale: 1,
+            }, 1450);
+          }
+          sjNetLines.forEach((path, index) => {
+            timeline.add(path, {
+              duration: 32,
+              ease: "inOut(2)",
+              strokeDashoffset: 0,
+            }, 1462 + index * 10);
+          });
+          timeline.add(sjNetNodes, {
+            delay: stagger(10),
+            duration: 28,
+            ease: "outBack(1.7)",
             opacity: 1,
             scale: 1,
-          }, 1330);
-        }
-        if (sjRing) {
-          timeline.add(sjRing, {
-            duration: 52,
-            ease: "linear",
-            strokeDashoffset: 0,
-          }, 1338);
-        }
-        timeline.add(sjSats, {
-          delay: stagger(12),
-          duration: 28,
-          ease: "outBack(1.7)",
-          opacity: 1,
-          scale: 1,
-        }, 1352);
-        if (sjGrad) {
-          timeline.add(sjGrad, {
-            duration: 30,
+          }, 1470);
+
+          if (sjFinal) {
+            timeline.add(sjFinal, {
+              duration: 38,
+              ease: "out(3)",
+              opacity: 1,
+              y: "0rem",
+            }, 1524);
+          }
+          timeline.add(sjFinalNodes, {
+            delay: stagger(18),
+            duration: 20,
             ease: "out(3)",
             opacity: 1,
-            y: "-0.2rem",
-          }, 1400);
-        }
-
-        if (sjStages[2]) {
-          timeline.add(sjStages[2], {
-            duration: 32,
-            ease: "inOut(3)",
-            opacity: 1,
-            scale: 1,
-          }, 1442);
-        }
-        if (sjNetCore) {
-          timeline.add(sjNetCore, {
-            duration: 26,
-            ease: "outBack(1.6)",
-            opacity: 1,
-            scale: 1,
-          }, 1450);
-        }
-        sjNetLines.forEach((path, index) => {
-          timeline.add(path, {
-            duration: 32,
+          }, 1546);
+          timeline.add(sjFinalSegs, {
+            delay: stagger(18),
+            duration: 22,
             ease: "inOut(2)",
-            strokeDashoffset: 0,
-          }, 1462 + index * 10);
-        });
-        timeline.add(sjNetNodes, {
-          delay: stagger(10),
-          duration: 28,
-          ease: "outBack(1.7)",
-          opacity: 1,
-          scale: 1,
-        }, 1470);
-
-        if (sjFinal) {
-          timeline.add(sjFinal, {
-            duration: 38,
-            ease: "out(3)",
-            opacity: 1,
-            y: "0rem",
-          }, 1524);
+            scaleX: 1,
+          }, 1548);
         }
-        timeline.add(sjFinalNodes, {
-          delay: stagger(18),
-          duration: 20,
-          ease: "out(3)",
-          opacity: 1,
-        }, 1546);
-        timeline.add(sjFinalSegs, {
-          delay: stagger(18),
-          duration: 22,
-          ease: "inOut(2)",
-          scaleX: 1,
-        }, 1548);
 
-        const verticalLayout = window.matchMedia("(max-width: 1099px)");
-        if (supportScene && verticalLayout.matches) {
+        if (supportScene && verticalLayout) {
           const supportExitParts = Array.from(
             supportScene.querySelectorAll<HTMLElement>(
               "[data-heading], [data-copy-block], ." + styles.arrowLink,
@@ -1819,7 +2029,7 @@ export default function AthletesUsa() {
             }, 1108 + index * 7);
           });
         }
-        if (campusScene && verticalLayout.matches) {
+        if (campusScene && verticalLayout) {
           const exitParts = Array.from(
             campusScene.querySelectorAll<HTMLElement>(
               "[data-heading], [data-copy-block], ." + styles.arrowLink,
@@ -1861,6 +2071,46 @@ export default function AthletesUsa() {
             scale: 1,
             y: "0rem",
           }, 1860);
+
+        /* ── About Origin: Born From Sport ── */
+        if (!reduceMotion) {
+          const aoStart = 1685;
+          const cycleDur = 14;
+          const cycleOverlap = 5;
+
+          aoCycles.forEach((el, i) => {
+            const start = aoStart + i * (cycleDur - cycleOverlap);
+            timeline.add(el, {
+              duration: 10,
+              ease: "out(3)",
+              opacity: 1,
+              scale: 1,
+            }, start);
+            timeline.add(el, {
+              duration: 10,
+              ease: "inOut(2)",
+              opacity: 0,
+              scale: 0.85,
+            }, start + cycleDur - 10);
+          });
+
+          const sliderStart = aoStart + aoCycles.length * (cycleDur - cycleOverlap) + 5;
+          if (aoSlider) {
+            timeline.add(aoSlider, {
+              duration: 12,
+              ease: "linear",
+              opacity: 1,
+            }, sliderStart);
+          }
+          timeline.add(aoSlides, {
+            delay: stagger(4),
+            duration: 14,
+            ease: "outBack(1.4)",
+            opacity: 1,
+            scale: 1,
+            y: "0rem",
+          }, sliderStart + 4);
+        }
       }
 
       if (handoff) {
@@ -1983,14 +2233,14 @@ export default function AthletesUsa() {
               <h2 data-heading>Antes, durante y después.</h2>
               <p className={styles.lede} data-copy-block>Una red que sigue con vos durante tu carrera universitaria y profesional.</p>
               <div className={styles.metrics} data-copy-block aria-label="Datos de Athletes USA">
-                <span><strong><span data-metric data-target="2008" data-format="plain">2008</span></strong>Desde</span>
-                <span><strong><span data-metric data-target="3000" data-format="es-ar">3.000</span>+</strong>Estudiantes-atletas</span>
-                <span><strong><span data-metric data-target="20000" data-format="es-ar">20.000</span>+</strong>Entrenadores</span>
+                <span><strong><span data-metric data-target="2008" data-format="plain">0</span></strong>Desde</span>
+                <span><strong>+<span data-metric data-target="3000" data-format="es-ar">0</span></strong>Estudiantes-atletas</span>
+                <span><strong>+<span data-metric data-target="20000" data-format="es-ar">0</span></strong>Entrenadores</span>
               </div>
               <ArrowLink to="support">Ver el acompañamiento</ArrowLink>
             </Scene>
 
-            <Scene id="about" side="right" theme="navy" art={null}>
+            <Scene id="about" side="right" theme="navy" art={<AboutOrigin />}>
               <p className={styles.eyebrow} data-copy-block>QUIÉNES SOMOS</p>
               <h2 data-heading>Una agencia que nació del deporte.</h2>
               <p className={styles.lede} data-copy-block>Desde 2008 acompañamos a atletas latinoamericanos hacia universidades de Estados Unidos: evaluación, reclutamiento y gestión completa del proceso.</p>

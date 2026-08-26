@@ -12,7 +12,7 @@
 
 .storyTrack {
   position: relative;
-  height: 1310svh;
+  height: 1400svh;
   background: var(--ausa-navy-deep);
 }
 
@@ -200,6 +200,10 @@
   pointer-events: none;
 }
 
+[data-scene="support"] .artLayer {
+  z-index: 0;
+}
+
 .sectionContent {
   position: relative;
   z-index: 2;
@@ -371,7 +375,7 @@
   position: absolute;
   z-index: 2;
   top: 4%;
-  right: 0;
+  right: 1rem;
   bottom: auto;
   left: 3.6rem;
   height: 24%;
@@ -1036,6 +1040,7 @@ Fin de estilos fuera de servicio. */
   position: absolute;
   inset: 0;
   display: flex;
+  align-items: center;
   gap: 0.6rem;
   padding: 5.2rem 1rem 6.5rem;
 }
@@ -1047,7 +1052,12 @@ Fin de estilos fuera de servicio. */
   align-items: center;
   justify-content: space-between;
   width: 2.1rem;
+  height: 70svh;
+  margin: auto 0;
   padding-block: 0.4rem;
+  opacity: 0;
+  transform: translateX(-1.5rem);
+  will-change: opacity, transform;
 }
 
 .sjRailSvg {
@@ -1110,6 +1120,11 @@ Fin de estilos fuera de servicio. */
   gap: 0.5rem;
 }
 
+.sjMilestone,
+.sjFinal {
+  display: none;
+}
+
 .sjCard {
   border: 1px solid rgb(6 27 79 / 12%);
   border-radius: 0.9rem;
@@ -1119,7 +1134,17 @@ Fin de estilos fuera de servicio. */
 }
 
 [data-sj-stage] {
-  padding: 0.65rem 0.75rem;
+  padding: 1rem 1.1rem;
+  position: absolute;
+  top: 0;
+  left: 2.7rem;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  max-width: min(80%, 22rem);
+  opacity: 0;
 }
 
 .sjHead {
@@ -1531,7 +1556,7 @@ Fin de estilos fuera de servicio. */
 
 .metrics span {
   padding: 0.9rem 0.5rem;
-  font-size: 0.55rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.25;
   text-transform: uppercase;
@@ -1545,8 +1570,127 @@ Fin de estilos fuera de servicio. */
   display: block;
   margin-bottom: 0.2rem;
   color: var(--ausa-red);
-  font-size: clamp(1.5rem, 6vw, 2.6rem);
+  font-size: 2rem;
   letter-spacing: -0.04em;
+}
+
+/* ═══════════════════════════════════════════
+   About Origin – Born From Sport
+   ═══════════════════════════════════════════ */
+
+.aoWrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+/* ── Cycling: one icon at a time ── */
+.aoCycling {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -8rem;
+}
+
+.aoCycleItem {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.aoCycleIcon {
+  width: 7rem;
+  height: 7rem;
+  color: var(--ausa-white);
+}
+
+.aoCycleIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.aoCycleName {
+  color: rgb(248 249 252 / 70%);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* ── Slider: all sports visible ── */
+.aoSlider {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  transform: translateY(-50%);
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.aoSlide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.aoSlideIcon {
+  width: 2.2rem;
+  height: 2.2rem;
+  color: var(--ausa-white);
+}
+
+.aoSlideIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.aoSlideName {
+  color: rgb(248 249 252 / 55%);
+  font-size: 0.45rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── Responsive ── */
+@media (min-width: 768px) and (min-height: 640px) {
+  .aoCycling {
+    margin-top: 0;
+  }
+
+  .aoCycleIcon {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .aoCycleName {
+    font-size: 0.95rem;
+  }
+
+  .aoSlider {
+    gap: 2.5rem;
+  }
+
+  .aoSlideIcon {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .aoSlideName {
+    font-size: 0.5rem;
+  }
 }
 
 .casesGrid {
@@ -2281,7 +2425,10 @@ Fin de estilos fuera de servicio. */
   }
 
   .sjRail {
+    display: flex;
     width: 2.4rem;
+    opacity: 1;
+    transform: none;
   }
 
   .sjNode {
@@ -2295,7 +2442,19 @@ Fin de estilos fuera de servicio. */
   }
 
   [data-sj-stage] {
+    position: relative;
+    inset: auto;
+    margin: 0;
+    width: auto;
+    max-width: none;
+    transform: none;
+    opacity: 1;
     padding: 0.85rem 1rem;
+  }
+
+  .sjMilestone,
+  .sjFinal {
+    display: flex;
   }
 
   .sjHead strong {
