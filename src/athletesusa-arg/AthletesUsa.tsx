@@ -607,6 +607,11 @@ function SupportJourney() {
             <li data-sj-check>Promoción con Entrenadores</li>
             <li data-sj-check>Negociación de Becas</li>
           </ul>
+          <ul className={styles.sjMobileList}>
+            <li>{sjBolt}Riverside U</li>
+            <li>{sjBolt}Bay College</li>
+            <li>{sjBolt}North Tech</li>
+          </ul>
           <div className={styles.sjStrip}>
             <i className={styles.sjEmitter}>{sjBolt}</i>
             <span className={styles.sjDots}>
@@ -638,6 +643,12 @@ function SupportJourney() {
               <p>Seguimos acompañándote para que puedas rendir dentro y fuera del campo.</p>
             </div>
           </header>
+          <ul className={styles.sjMobileList}>
+            <li>{sjChart}Actualización de perfil</li>
+            <li>{sjBook}Seguimiento académico</li>
+            <li>{sjTrophy}Soporte deportivo</li>
+            <li>{sjRefresh}Asistencia en transferencias</li>
+          </ul>
           <div className={styles.sjOrbit}>
             <svg className={styles.sjOrbitSvg} viewBox="0 0 100 100">
               <circle data-sj-ring cx="50" cy="50" r="44" pathLength={100} />
@@ -662,6 +673,12 @@ function SupportJourney() {
               <p>La red construida durante la experiencia sigue generando oportunidades.</p>
             </div>
           </header>
+          <ul className={styles.sjMobileList}>
+            <li>{sjChart}Desarrollo profesional</li>
+            <li>{sjBriefcase}Oportunidades laborales</li>
+            <li>{sjGlobe}Networking internacional</li>
+            <li>{sjMedal}Oportunidades deportivas</li>
+          </ul>
           <div className={styles.sjNet}>
             <svg className={styles.sjNetSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
               <path data-sj-net-line d="M12 84C4 64 4 36 14 16" pathLength={1} />
@@ -1818,7 +1835,7 @@ export default function AthletesUsa() {
               ease: "out(3)",
               opacity: 1,
               scale: 1,
-          }, 1040);
+          }, 1025);
             timeline.add(sjStages[0], {
               duration: 20,
               ease: "inOut(2)",

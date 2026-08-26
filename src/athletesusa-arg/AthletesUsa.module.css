@@ -1258,6 +1258,39 @@ Fin de estilos fuera de servicio. */
   text-transform: uppercase;
 }
 
+.sjMobileList {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sjMobileList li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  background: rgb(6 27 79 / 5%);
+  color: rgb(6 27 79 / 82%);
+  font-size: var(--sj-text);
+  font-weight: 600;
+}
+
+.sjMobileList li svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+  color: var(--ausa-red);
+}
+
+.sjStrip,
+.sjOrbit,
+.sjNet {
+  display: none;
+}
+
 .sjMilestone {
   display: flex;
   align-items: center;
@@ -2455,6 +2488,22 @@ Fin de estilos fuera de servicio. */
   .sjMilestone,
   .sjFinal {
     display: flex;
+  }
+
+  .sjMobileList {
+    display: none;
+  }
+
+  .sjStrip {
+    display: flex;
+  }
+
+  .sjOrbit {
+    display: block;
+  }
+
+  .sjNet {
+    display: block;
   }
 
   .sjHead strong {
